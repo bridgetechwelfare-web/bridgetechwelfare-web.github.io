@@ -1,125 +1,187 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridge Tech Welfare</title>
+<title>Bridge Tech Welfare | Official</title>
 <style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}
-body{margin:0;background:#eef2ff;padding:15px}
-.card{max-width:480px;margin:auto;background:white;border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
-.top{display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;font-size:20px;color:#1e3a8a}
-.userName{background:#dbeafe;padding:8px 14px;border-radius:20px;font-weight:bold}
-.search{width:100%;padding:13px;border-radius:12px;border:1px solid #ddd;margin:18px 0;font-size:16px;outline:none}
-.greet{font-size:22px;font-weight:800}
-.welcome{font-size:28px;font-weight:900;color:#1e3a8a;margin:5px 0}
-.sub{color:#666;margin-bottom:20px}
-input{width:100%;padding:13px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:16px}
-.passWrap{position:relative}
-.eye{position:absolute;right:12px;top:20px;cursor:pointer;font-size:20px}
-.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:17px;font-weight:bold;margin-top:10px;cursor:pointer}
-.btn2{background:#16a34a}
-.googleBtn{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;background:white;font-size:17px;font-weight:bold;margin-top:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
-.divider{text-align:center;margin:15px 0;color:#888}
-.linkBtn{display:block;text-decoration:none;text-align:center;padding:15px;border-radius:14px;margin:10px 0;font-weight:bold;color:white;font-size:17px}
-.green{background:#25D366}.red{background:#FF0000}.blue{background:#128C7E}.dark{background:#111827}
-.hidden{display:none}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',Arial;background:linear-gradient(135deg,#0f2a6b,#1a56db,#00c6ff);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:15px}
+  .card{background:#fff;width:100%;max-width:430px;border-radius:22px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+  .top{background:#0f2a6b;color:#fff;padding:26px 20px;text-align:center}
+  .logo{width:70px;height:70px;background:#fff;color:#0f2a6b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;margin:auto}
+  .top h1{margin:12px 0 5px;font-size:23px}
+  .top p{margin:0;opacity:.8;font-size:13px}
+  .form{padding:20px}
+  input,select,textarea{width:100%;padding:13px;margin:7px 0;border:1.5px solid #e5e7eb;border-radius:12px;outline:none;font-size:15px}
+  .btn{width:100%;padding:13px;margin:8px 0;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer}
+  .btn-blue{background:#1a56db;color:#fff}
+  .btn-dark{background:#111;color:#fff}
+  .btn-green{background:#16a34a;color:#fff}
+  .btn-google{background:#fff;color:#333;border:1.5px solid #ddd}
+  .link{display:block;margin:9px 0;padding:13px;background:#eef2ff;border-radius:12px;text-decoration:none;color:#1a56db;font-weight:700;text-align:center}
+  .toolBox{background:#f8fafc;padding:12px;border-radius:12px;margin:8px 0;text-align:left}
+  .toolBox b{font-size:15px}
+  .toolBox p{margin:5px 0;color:#555;font-size:13px}
+  .cat{background:#1a56db;color:#fff;padding:2px 8px;border-radius:20px;font-size:11px}
+  .downBtn{display:block;text-align:center;background:#16a34a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;margin-top:8px;font-weight:700}
+  #msg,#msg2{text-align:center;color:red;font-size:13px}
+  .admin-link{text-align:center;margin-top:10px}
+  .admin-link a{color:#666;font-size:13px;text-decoration:none}
 </style>
 </head>
 <body>
 
-<div class="card" id="authCard">
-  <div style="text-align:center">
-    <div class="logo">Bridge Tech Welfare</div>
-    <p>Apna account banayein ya Login karein</p>
+<!-- LOGIN -->
+<div class="card" id="authBox">
+  <div class="top"><div class="logo">B</div><h1>BRIDGE TECH WELFARE</h1><p>Official Member Portal</p></div>
+  <div class="form">
+    <h2 style="text-align:center;margin:0">Welcome Back 👋</h2>
+    <p style="text-align:center;color:#777;font-size:13px">Login to continue</p>
+    <input id="name" placeholder="Full Name (Sign Up ke liye)">
+    <input id="phone" placeholder="Mobile Number">
+    <input id="email" type="email" placeholder="Email Address">
+    <input id="password" type="password" placeholder="Password">
+    <button class="btn btn-blue" onclick="signUp()">Create Account • Sign Up</button>
+    <button class="btn btn-dark" onclick="login()">Login</button>
+    <button class="btn btn-google" onclick="googleLogin()">Continue with Google</button>
+    <p id="msg"></p>
+    <div class="admin-link"><a href="#" onclick="showAdmin()">🔐 Admin Panel - Upload Tools</a></div>
   </div>
-  <button class="googleBtn" onclick="googleLogin()">🔍 Continue with Google</button>
-  <div class="divider">--- YA ---</div>
-  <input id="name" type="text" placeholder="Apna Naam likhein">
-  <input id="email" type="email" placeholder="Email likhein">
-  <div class="passWrap">
-    <input id="password" type="password" placeholder="Password likhein">
-    <span class="eye" onclick="togglePass()">👁️</span>
-  </div>
-  <button class="btn" onclick="signup()">Sign Up</button>
-  <button class="btn btn2" onclick="login()">Login</button>
-  <p id="msg" style="text-align:center;color:green;font-weight:bold"></p>
 </div>
 
-<div class="card hidden" id="homeCard">
-  <div class="top">
-    <div class="logo">Bridge Tech Welfare</div>
-    <div class="userName" id="topName">User</div>
+<!-- HOME - USER KO YAHAN TOOLS NAZAR AAYENGE -->
+<div class="card" id="homeBox" style="display:none">
+  <div class="top"><div class="logo">✓</div><h1 id="welcomeText">Welcome!</h1><p>Bridge Tech Welfare</p></div>
+  <div class="form">
+    <a class="link" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t" target="_blank">📢 WhatsApp Channel</a>
+    <a class="link" href="https://youtube.com/@instructor-of-btw" target="_blank">▶️ YouTube - Instructor of BTW</a>
+    <a class="link" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">💬 WhatsApp Group</a>
+    <h3 style="text-align:center">🔥 Latest Tools & Apps</h3>
+    <div id="toolsList"><p style="text-align:center;color:#888">Loading...</p></div>
+    <button class="btn btn-dark" onclick="logout()">Logout</button>
   </div>
-  <input class="search" id="searchBox" onkeyup="doSearch()" type="text" placeholder="Search karein...">
-  <div class="greet" id="greeting">Good Morning</div>
-  <div class="welcome">Welcome! <span id="welcomeName"></span></div>
-  <p class="sub">Bridge Tech Welfare mein khush amdeed.</p>
-  <div id="links">
-    <a class="linkBtn green" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t" target="_blank">📢 WhatsApp Channel Follow Karein</a>
-    <a class="linkBtn red" href="https://youtube.com/@instructor-of-btw?si=IFh27qGn8z44985D" target="_blank">▶️ YouTube - Instructor of BTW</a>
-    <a class="linkBtn blue" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">💬 WhatsApp Group Join Karein</a>
-    <a class="linkBtn dark" href="mailto:bridgetechwelfare@gmail.com">✉️ Email Karein</a>
+</div>
+
+<!-- ADMIN - UPLOAD PANEL -->
+<div class="card" id="adminBox" style="display:none">
+  <div class="top"><div class="logo">A</div><h1>ADMIN UPLOAD PANEL</h1><p>Extension • Tool • Application Upload</p></div>
+  <div class="form">
+    <input id="adminEmail" type="email" placeholder="Admin Email">
+    <input id="adminPass" type="password" placeholder="Admin Password">
+    <button class="btn btn-blue" onclick="adminLogin()">Admin Login</button>
+    <div id="uploadArea" style="display:none">
+      <hr>
+      <h3 style="text-align:center">📤 New Upload</h3>
+      <input id="toolTitle" placeholder="Title - jaise: CapCut Pro">
+      <select id="toolCat">
+        <option value="Extension">🧩 Extension</option>
+        <option value="Tool">🛠️ Tool</option>
+        <option value="Application">📱 Application</option>
+        <option value="Course">📚 Course</option>
+      </select>
+      <textarea id="toolDesc" placeholder="Description likhein..."></textarea>
+      <input id="toolLink" placeholder="Download Link / Drive Link / Website Link">
+      <button class="btn btn-green" onclick="uploadTool()">Upload Now 🚀</button>
+      <p id="uploadMsg" style="text-align:center;color:green"></p>
+    </div>
+    <h3>Your Uploads</h3>
+    <div id="adminList"></div>
+    <button class="btn btn-dark" onclick="backToLogin()">Back to Login</button>
+    <p id="msg2"></p>
   </div>
-  <button class="btn" style="background:#ef4444" onclick="logout()">Logout</button>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "APNI_API_KEY_YAHAN",
-  authDomain: "APNA_PROJECT.firebaseapp.com",
-  projectId: "APNA_PROJECT_ID",
-  storageBucket: "APNA_PROJECT.appspot.com",
-  messagingSenderId: "APNA_SENDER_ID",
-  appId: "APNI_APP_ID"
+  apiKey: "AIzaSyD5AWr7FDOUPLUtcbhoMgztIYupXqIaes8",
+  authDomain: "bridgetech-welfare.firebaseapp.com",
+  projectId: "bridgetech-welfare",
+  storageBucket: "bridgetech-welfare.firebasestorage.app",
+  messagingSenderId: "271765569707",
+  appId: "1:271765569707:web:10865d27fe8a9f154377ee",
+  measurementId: "G-QWNZGMGL72"
 };
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-window.togglePass = function(){
-  let p=document.getElementById('password');
-  if(p.type==="password") p.type="text"; else p.type="password";
+async function saveUser(user,name,phone){
+  try{ await setDoc(doc(db,"users",user.uid),{name:name||user.displayName||"",phone:phone||"",email:user.email,createdAt:new Date().toISOString()}); }catch(e){}
 }
-window.googleLogin = async function(){
+window.signUp = async()=>{
+  const name=document.getElementById('name').value, phone=document.getElementById('phone').value, email=document.getElementById('email').value, pass=document.getElementById('password').value;
+  try{ const r=await createUserWithEmailAndPassword(auth,email,pass); await saveUser(r.user,name,phone); }catch(e){ document.getElementById('msg').innerText=e.message; }
+};
+window.login = async()=>{
+  const email=document.getElementById('email').value, pass=document.getElementById('password').value;
+  try{ await signInWithEmailAndPassword(auth,email,pass); }catch(e){ document.getElementById('msg').innerText=e.message; }
+};
+window.googleLogin = async()=>{
+  try{ const r=await signInWithPopup(auth,provider); await saveUser(r.user,"",""); }catch(e){ document.getElementById('msg').innerText=e.message; }
+};
+window.logout = async()=>{ await signOut(auth); };
+window.showAdmin = ()=>{ document.getElementById('authBox').style.display='none'; document.getElementById('adminBox').style.display='block'; };
+window.backToLogin = ()=>{ document.getElementById('adminBox').style.display='none'; document.getElementById('authBox').style.display='block'; };
+
+// TOOLS LOAD - USER KE LIYE
+async function loadTools(){
   try{
-    let result=await signInWithPopup(auth,provider);
-    let name=result.user.displayName || result.user.email;
-    localStorage.setItem("btw_name",name);
-    showHome(name);
-  }catch(e){alert(e.message)}
+    const snap=await getDocs(query(collection(db,"tools"), orderBy("createdAt","desc")));
+    let html="";
+    if(snap.empty) html="<p style='text-align:center;color:#888'>Abhi koi tool upload nahi hua</p>";
+    snap.forEach(d=>{
+      const t=d.data();
+      html+=`<div class="toolBox"><b>${t.title}</b> <span class="cat">${t.category}</span><p>${t.desc||""}</p><a class="downBtn" href="${t.link}" target="_blank">⬇️ Download / Open</a></div>`;
+    });
+    document.getElementById('toolsList').innerHTML=html;
+    document.getElementById('adminList').innerHTML=html;
+  }catch(e){ console.log(e); }
 }
-window.signup = async function(){
-  let name=document.getElementById('name').value;
-  let email=document.getElementById('email').value;
-  let pass=document.getElementById('password').value;
-  if(!name||!email||!pass){alert("Teeno khane bharein");return;}
-  try{ await createUserWithEmailAndPassword(auth,email,pass); localStorage.setItem("btw_name",name); showHome(name);}catch(e){alert(e.message)}
-}
-window.login = async function(){
-  let name=document.getElementById('name').value;
-  let email=document.getElementById('email').value;
-  let pass=document.getElementById('password').value;
-  try{ await signInWithEmailAndPassword(auth,email,pass); if(name) localStorage.setItem("btw_name",name); showHome(localStorage.getItem("btw_name")||"Dost");}catch(e){alert(e.message)}
-}
-window.logout = async function(){ await signOut(auth); document.getElementById('homeCard').classList.add('hidden'); document.getElementById('authCard').classList.remove('hidden'); }
-function showHome(name){
-  document.getElementById('authCard').classList.add('hidden');
-  document.getElementById('homeCard').classList.remove('hidden');
-  document.getElementById('topName').innerText=name;
-  document.getElementById('welcomeName').innerText=name;
-  let h=new Date().getHours(); let g="Good Morning";
-  if(h>=12 && h<17) g="Good Afternoon"; else if(h>=17 && h<21) g="Good Evening"; else if(h>=21 || h<5) g="Good Night";
-  document.getElementById('greeting').innerText=g;
-}
-window.doSearch = function(){
-  let v=document.getElementById('searchBox').value.toLowerCase();
-  document.querySelectorAll('#links a').forEach(a=>{ a.style.display = a.innerText.toLowerCase().includes(v) ? 'block':'none'; });
-}
+
+// ADMIN LOGIN + UPLOAD
+window.adminLogin = async()=>{
+  const email=document.getElementById('adminEmail').value, pass=document.getElementById('adminPass').value;
+  if(email!=="bridgetechwelfare@gmail.com"){ document.getElementById('msg2').innerText="Only Admin Allowed!"; return; }
+  try{
+    await signInWithEmailAndPassword(auth,email,pass);
+    document.getElementById('uploadArea').style.display='block';
+    document.getElementById('msg2').innerText="Admin Login Success! Ab upload karein.";
+    loadTools();
+  }catch(e){ document.getElementById('msg2').innerText=e.message; }
+};
+window.uploadTool = async()=>{
+  const title=document.getElementById('toolTitle').value;
+  const cat=document.getElementById('toolCat').value;
+  const desc=document.getElementById('toolDesc').value;
+  const link=document.getElementById('toolLink').value;
+  if(!title || !link){ alert("Title aur Link zaroori hai!"); return; }
+  try{
+    await addDoc(collection(db,"tools"),{title:title,category:cat,desc:desc,link:link,createdAt:new Date().toISOString()});
+    document.getElementById('uploadMsg').innerText="Upload Ho Gaya! ✅";
+    document.getElementById('toolTitle').value=""; document.getElementById('toolDesc').value=""; document.getElementById('toolLink').value="";
+    loadTools();
+  }catch(e){ document.getElementById('uploadMsg').innerText=e.message; }
+};
+
+onAuthStateChanged(auth,(user)=>{
+  if(user){
+    if(document.getElementById('adminBox').style.display==='block') return;
+    document.getElementById('authBox').style.display='none';
+    document.getElementById('homeBox').style.display='block';
+    document.getElementById('welcomeText').innerText="Welcome! "+(user.displayName||user.email);
+    loadTools();
+  }else{
+    document.getElementById('authBox').style.display='block';
+    document.getElementById('homeBox').style.display='none';
+  }
+});
 </script>
 </body>
 </html>
