@@ -1,49 +1,79 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSR Hub - Extensions, Tools, Applications</title>
+<title>BridgeTech Welfare Association</title>
 <style>
-body{font-family:Arial; background:#f2f2f2; text-align:center; margin:0; padding:0}
-header{background:#000; color:#fff; padding:20px}
-h1{margin:0}
-.box{background:#fff; margin:15px; padding:15px; border-radius:10px; text-align:left}
-h2{color:#000}
-button{background:#000; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:16px}
-a{color:#fff; text-decoration:none}
+body{font-family:Arial,sans-serif;background:#f2f2f2;margin:0;padding:0}
+.header{background:#000;color:#fff;text-align:center;padding:25px 15px}
+.header h1{margin:0;font-size:28px}
+.header p{margin:8px 0 0 0}
+.menu{display:flex;justify-content:center;gap:10px;padding:15px;flex-wrap:wrap}
+.menu button{background:#000;color:#fff;border:none;padding:12px 20px;border-radius:8px;font-size:16px;cursor:pointer}
+.card{background:#fff;margin:15px;border-radius:12px;padding:18px}
+.card h2{margin:0 0 8px 0}
+.card p{line-height:1.7}
+.down{display:block;background:#000;color:#fff;text-align:center;padding:12px;border-radius:8px;text-decoration:none;margin-top:12px;font-size:16px}
+.meta{font-size:13px;color:#555;margin-top:10px}
+.hidden{display:none}
 </style>
 </head>
 <body>
 
-<header>
-<h1>CSR Hub</h1>
+<div class="header">
+<h1>BridgeTech Welfare Association</h1>
 <p>Extensions, Tools, Applications</p>
-</header>
-
-<!-- Extensions -->
-<div class="box">
-<h2>Extensions</h2>
-<h3>CSR AI Vision Assistant</h3>
-<p>یہ ایکسٹینشن نابینا افراد کی مدد کے لیے بنائی گئی ہے۔ یہ آپ کو آس پاس کی چیزوں کے بارے میں بتاتی ہے۔</p>
-<button><a href="CSR-AI-Vision-Assistant.zip">Download Extension From Here</a></button>
 </div>
 
-<!-- Tools -->
-<div class="box">
-<h2>Tools</h2>
-<h3>CSR Tool</h3>
-<p>یہ ٹول آپ کے کام کو آسان بناتا ہے۔</p>
-<button><a href="#">Download Tool From Here</a></button>
+<div class="menu">
+<button onclick="show('ext')">Extensions</button>
+<button onclick="show('tools')">Tools</button>
+<button onclick="show('apps')">Applications</button>
 </div>
 
-<!-- Applications -->
-<div class="box">
-<h2>Applications</h2>
-<h3>CSR Application</h3>
-<p>یہ ایپلیکیشن آپ کے موبائل کے لیے ہے۔</p>
-<button><a href="#">Download Application From Here</a></button>
+<div id="ext">
+<div class="card">
+<h2>Extension 1 Name Here</h2>
+<p>Yahan is Extension ki Description likhen. Ye Extension kis kaam ki hai, nabina afrad ki kis tarah madad karti hai.</p>
+<a class="down" href="#">Download Extension From Here</a>
+<div class="meta">Uploaded By: BridgeTech Welfare Association<br>Date: 15 November 2026</div>
 </div>
+
+<div class="card">
+<h2>Extension 2 Name Here</h2>
+<p>Yahan dusri Extension ki Description likhen.</p>
+<a class="down" href="#">Download Extension From Here</a>
+<div class="meta">Uploaded By: BridgeTech Welfare Association<br>Date: 15 November 2026</div>
+</div>
+</div>
+
+<div id="tools" class="hidden">
+<div class="card">
+<h2>Tool 1 Name Here</h2>
+<p>Yahan Tool ki Description likhen.</p>
+<a class="down" href="#">Download Tool From Here</a>
+<div class="meta">Uploaded By: BridgeTech Welfare Association<br>Date: 15 November 2026</div>
+</div>
+</div>
+
+<div id="apps" class="hidden">
+<div class="card">
+<h2>Application 1 Name Here</h2>
+<p>Yahan Application ki Description likhen.</p>
+<a class="down" href="#">Download Application From Here</a>
+<div class="meta">Uploaded By: BridgeTech Welfare Association<br>Date: 15 November 2026</div>
+</div>
+</div>
+
+<script>
+function show(id){
+document.getElementById('ext').classList.add('hidden');
+document.getElementById('tools').classList.add('hidden');
+document.getElementById('apps').classList.add('hidden');
+document.getElementById(id).classList.remove('hidden');
+}
+</script>
 
 </body>
 </html>
