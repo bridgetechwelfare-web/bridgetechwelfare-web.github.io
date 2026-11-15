@@ -5,66 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bridge Tech Welfare</title>
 <style>
-body{font-family:Arial; padding:20px; background:#f2f2f2; text-align:center}
-.box{background:white; padding:20px; border-radius:10px; max-width:400px; margin:auto}
-input{width:90%; padding:12px; margin:8px 0; font-size:18px}
-button{width:95%; padding:14px; font-size:19px; background:#0b6e4f; color:white; border:none; border-radius:8px}
-h1{font-size:24px}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:#eef2ff;padding:15px}
+.card{max-width:480px;margin:auto;background:white;border-radius:20px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;font-size:20px;color:#1e3a8a}
+.userName{background:#dbeafe;padding:8px 14px;border-radius:20px;font-weight:bold}
+.search{width:100%;padding:13px;border-radius:12px;border:1px solid #ddd;margin:18px 0;font-size:16px;outline:none}
+.greet{font-size:22px;font-weight:800}
+.welcome{font-size:28px;font-weight:900;color:#1e3a8a;margin:5px 0}
+.sub{color:#666;margin-bottom:20px}
+input{width:100%;padding:13px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:16px}
+.passWrap{position:relative}
+.eye{position:absolute;right:12px;top:20px;cursor:pointer;font-size:20px}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#2563eb;color:white;font-size:17px;font-weight:bold;margin-top:10px;cursor:pointer}
+.btn2{background:#16a34a}
+.googleBtn{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;background:white;font-size:17px;font-weight:bold;margin-top:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.divider{text-align:center;margin:15px 0;color:#888}
+.linkBtn{display:block;text-decoration:none;text-align:center;padding:15px;border-radius:14px;margin:10px 0;font-weight:bold;color:white;font-size:17px}
+.green{background:#25D366}.red{background:#FF0000}.blue{background:#128C7E}.dark{background:#111827}
+.hidden{display:none}
 </style>
 </head>
 <body>
-<div class="box">
-<h1>Bridge Tech Welfare</h1>
-<p>Sign Up</p>
-<label for="name">Name</label><br>
-<input id="name" type="text" placeholder="Apna Naam"><br>
-<label for="phone">Mobile Number</label><br>
-<input id="phone" type="tel" placeholder="0300-1234567"><br>
-<label for="email">Email</label><br>
-<input id="email" type="email" placeholder="Email"><br>
-<label for="password">Password</label><br>
-<input id="password" type="password" placeholder="Password"><br>
-<button onclick="signup()">Sign Up</button>
-<p id="msg"></p>
+
+<div class="card" id="authCard">
+  <div style="text-align:center">
+    <div class="logo">Bridge Tech Welfare</div>
+    <p>Apna account banayein ya Login karein</p>
+  </div>
+  <button class="googleBtn" onclick="googleLogin()">🔍 Continue with Google</button>
+  <div class="divider">--- YA ---</div>
+  <input id="name" type="text" placeholder="Apna Naam likhein">
+  <input id="email" type="email" placeholder="Email likhein">
+  <div class="passWrap">
+    <input id="password" type="password" placeholder="Password likhein">
+    <span class="eye" onclick="togglePass()">👁️</span>
+  </div>
+  <button class="btn" onclick="signup()">Sign Up</button>
+  <button class="btn btn2" onclick="login()">Login</button>
+  <p id="msg" style="text-align:center;color:green;font-weight:bold"></p>
+</div>
+
+<div class="card hidden" id="homeCard">
+  <div class="top">
+    <div class="logo">Bridge Tech Welfare</div>
+    <div class="userName" id="topName">User</div>
+  </div>
+  <input class="search" id="searchBox" onkeyup="doSearch()" type="text" placeholder="Search karein...">
+  <div class="greet" id="greeting">Good Morning</div>
+  <div class="welcome">Welcome! <span id="welcomeName"></span></div>
+  <p class="sub">Bridge Tech Welfare mein khush amdeed.</p>
+  <div id="links">
+    <a class="linkBtn green" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t" target="_blank">📢 WhatsApp Channel Follow Karein</a>
+    <a class="linkBtn red" href="https://youtube.com/@instructor-of-btw?si=IFh27qGn8z44985D" target="_blank">▶️ YouTube - Instructor of BTW</a>
+    <a class="linkBtn blue" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">💬 WhatsApp Group Join Karein</a>
+    <a class="linkBtn dark" href="mailto:bridgetechwelfare@gmail.com">✉️ Email Karein</a>
+  </div>
+  <button class="btn" style="background:#ef4444" onclick="logout()">Logout</button>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD5AWr7FDOUPLUtcbhoMgztIYupXqIaes8",
-  authDomain: "bridgetech-welfare.firebaseapp.com",
-  projectId: "bridgetech-welfare",
-  storageBucket: "bridgetech-welfare.firebasestorage.app",
-  messagingSenderId: "271765569707",
-  appId: "1:271765569707:web:10865d27fe8a9f154377ee",
-  measurementId: "G-QWNZGMGL72"
+  apiKey: "APNI_API_KEY_YAHAN",
+  authDomain: "APNA_PROJECT.firebaseapp.com",
+  projectId: "APNA_PROJECT_ID",
+  storageBucket: "APNA_PROJECT.appspot.com",
+  messagingSenderId: "APNA_SENDER_ID",
+  appId: "APNI_APP_ID"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
 
-window.signup = async function(){
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const msg = document.getElementById("msg");
+window.togglePass = function(){
+  let p=document.getElementById('password');
+  if(p.type==="password") p.type="text"; else p.type="password";
+}
+window.googleLogin = async function(){
   try{
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    await setDoc(doc(db, "users", user.user.uid), {
-      name: name,
-      phone: phone,
-      email: email,
-      createdAt: new Date()
-    });
-    msg.innerText = "Ho gaya! Sign Up kamyab ho gaya.";
-  }catch(e){
-    msg.innerText = "Error: " + e.message;
-  }
+    let result=await signInWithPopup(auth,provider);
+    let name=result.user.displayName || result.user.email;
+    localStorage.setItem("btw_name",name);
+    showHome(name);
+  }catch(e){alert(e.message)}
+}
+window.signup = async function(){
+  let name=document.getElementById('name').value;
+  let email=document.getElementById('email').value;
+  let pass=document.getElementById('password').value;
+  if(!name||!email||!pass){alert("Teeno khane bharein");return;}
+  try{ await createUserWithEmailAndPassword(auth,email,pass); localStorage.setItem("btw_name",name); showHome(name);}catch(e){alert(e.message)}
+}
+window.login = async function(){
+  let name=document.getElementById('name').value;
+  let email=document.getElementById('email').value;
+  let pass=document.getElementById('password').value;
+  try{ await signInWithEmailAndPassword(auth,email,pass); if(name) localStorage.setItem("btw_name",name); showHome(localStorage.getItem("btw_name")||"Dost");}catch(e){alert(e.message)}
+}
+window.logout = async function(){ await signOut(auth); document.getElementById('homeCard').classList.add('hidden'); document.getElementById('authCard').classList.remove('hidden'); }
+function showHome(name){
+  document.getElementById('authCard').classList.add('hidden');
+  document.getElementById('homeCard').classList.remove('hidden');
+  document.getElementById('topName').innerText=name;
+  document.getElementById('welcomeName').innerText=name;
+  let h=new Date().getHours(); let g="Good Morning";
+  if(h>=12 && h<17) g="Good Afternoon"; else if(h>=17 && h<21) g="Good Evening"; else if(h>=21 || h<5) g="Good Night";
+  document.getElementById('greeting').innerText=g;
+}
+window.doSearch = function(){
+  let v=document.getElementById('searchBox').value.toLowerCase();
+  document.querySelectorAll('#links a').forEach(a=>{ a.style.display = a.innerText.toLowerCase().includes(v) ? 'block':'none'; });
 }
 </script>
 </body>
