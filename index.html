@@ -3,89 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridge Tech Welfare | Official</title>
+<title>Bridge Tech Welfare | Official Member Portal</title>
 <style>
   *{box-sizing:border-box}
-  body{margin:0;font-family:'Segoe UI',Arial;background:linear-gradient(135deg,#0f2a6b,#1a56db,#00c6ff);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:15px}
-  .card{background:#fff;width:100%;max-width:430px;border-radius:22px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
-  .top{background:#0f2a6b;color:#fff;padding:26px 20px;text-align:center}
-  .logo{width:70px;height:70px;background:#fff;color:#0f2a6b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;margin:auto}
-  .top h1{margin:12px 0 5px;font-size:23px}
-  .top p{margin:0;opacity:.8;font-size:13px}
-  .form{padding:20px}
-  input,select,textarea{width:100%;padding:13px;margin:7px 0;border:1.5px solid #e5e7eb;border-radius:12px;outline:none;font-size:15px}
-  .btn{width:100%;padding:13px;margin:8px 0;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer}
+  body{margin:0;font-family:'Segoe UI', Tahoma, Arial, sans-serif;background:#eef2f7;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+  .card{background:#ffffff;width:100%;max-width:440px;border-radius:24px;overflow:hidden;box-shadow:0 15px 40px rgba(15,42,107,0.18);border:1px solid #e2e8f0}
+  .top{background:linear-gradient(135deg,#0f2a6b,#1a56db);color:#fff;padding:32px 24px;text-align:center}
+  .logo{width:72px;height:72px;background:#fff;color:#0f2a6b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:900;margin:auto;box-shadow:0 5px 15px rgba(0,0,0,0.2)}
+  .top h1{margin:14px 0 6px;font-size:22px;letter-spacing:0.5px}
+  .top p{margin:0;opacity:0.85;font-size:13.5px;line-height:1.5}
+  .form{padding:24px}
+  .form h2{text-align:center;margin:0 0 6px;font-size:22px;color:#0f2a6b}
+  .form .sub{text-align:center;color:#64748b;font-size:13.5px;margin:0 0 16px}
+  label{display:block;text-align:left;font-weight:700;margin-top:14px;margin-bottom:2px;font-size:14px;color:#1e293b}
+  input,select,textarea{width:100%;padding:13px 14px;margin:4px 0;border:1.5px solid #cbd5e1;border-radius:12px;outline:none;font-size:15px;background:#f8fafc;color:#0f172a}
+  input:focus,select:focus,textarea:focus{border-color:#1a56db;background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,0.12)}
+  .btn{width:100%;padding:14px;margin:9px 0 0;border:none;border-radius:12px;font-size:15.5px;font-weight:700;cursor:pointer;transition:0.2s}
   .btn-blue{background:#1a56db;color:#fff}
-  .btn-dark{background:#111;color:#fff}
-  .btn-green{background:#16a34a;color:#fff}
-  .btn-google{background:#fff;color:#333;border:1.5px solid #ddd}
-  .link{display:block;margin:9px 0;padding:13px;background:#eef2ff;border-radius:12px;text-decoration:none;color:#1a56db;font-weight:700;text-align:center}
-  .toolBox{background:#f8fafc;padding:12px;border-radius:12px;margin:8px 0;text-align:left}
-  .toolBox b{font-size:15px}
-  .toolBox p{margin:5px 0;color:#555;font-size:13px}
-  .cat{background:#1a56db;color:#fff;padding:2px 8px;border-radius:20px;font-size:11px}
-  .downBtn{display:block;text-align:center;background:#16a34a;color:#fff;padding:10px;border-radius:10px;text-decoration:none;margin-top:8px;font-weight:700}
-  #msg,#msg2{text-align:center;color:red;font-size:13px}
-  .admin-link{text-align:center;margin-top:10px}
-  .admin-link a{color:#666;font-size:13px;text-decoration:none}
+  .btn-blue:hover{background:#0f2a6b}
+  .btn-dark{background:#0f172a;color:#fff}
+  .btn-green{background:#15803d;color:#fff}
+  .btn-google{background:#fff;color:#1e293b;border:1.5px solid #cbd5e1}
+  .or{text-align:center;color:#94a3b8;margin:16px 0 6px;font-size:13px}
+  .link{display:block;margin:10px 0;padding:14px;background:#eff6ff;border:1px solid #dbeafe;border-radius:12px;text-decoration:none;color:#1a56db;font-weight:700;text-align:center;font-size:15px}
+  .link:hover{background:#dbeafe}
+  .toolBox{background:#f8fafc;padding:14px;border-radius:14px;margin:10px 0;text-align:left;border:1px solid #e2e8f0}
+  .toolBox b{font-size:15.5px;color:#0f172a}
+  .toolBox p{margin:6px 0;color:#475569;font-size:13.5px;line-height:1.5}
+  .cat{background:#1a56db;color:#fff;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+  .downBtn{display:block;text-align:center;background:#15803d;color:#fff;padding:11px;border-radius:10px;text-decoration:none;margin-top:10px;font-weight:700;font-size:14px}
+  .section-title{text-align:center;color:#0f2a6b;font-size:18px;margin:18px 0 8px}
+  #msg,#msg2,#uploadMsg{text-align:center;font-size:13.5px;min-height:18px}
+  #msg,#msg2{color:#dc2626}
+  #uploadMsg{color:#15803d}
+  .admin-link{text-align:center;margin-top:16px;padding-top:14px;border-top:1px solid #e2e8f0}
+  .admin-link a{color:#475569;font-size:13.5px;text-decoration:none;font-weight:600}
+  .footer{text-align:center;color:#94a3b8;font-size:12px;padding:0 0 16px}
 </style>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div class="card" id="authBox">
-  <div class="top"><div class="logo">B</div><h1>BRIDGE TECH WELFARE</h1><p>Official Member Portal</p></div>
+  <div class="top"><div class="logo">B</div><h1>BRIDGE TECH WELFARE</h1><p>Official Member Portal<br>Learn - Earn - Grow</p></div>
   <div class="form">
-    <h2 style="text-align:center;margin:0">Welcome Back 👋</h2>
-    <p style="text-align:center;color:#777;font-size:13px">Login to continue</p>
-    <input id="name" placeholder="Full Name (Sign Up ke liye)">
-    <input id="phone" placeholder="Mobile Number">
-    <input id="email" type="email" placeholder="Email Address">
-    <input id="password" type="password" placeholder="Password">
-    <button class="btn btn-blue" onclick="signUp()">Create Account • Sign Up</button>
-    <button class="btn btn-dark" onclick="login()">Login</button>
+    <h2>Welcome Back</h2>
+    <p class="sub">Please login to continue to your account</p>
+    <label for="name">Full Name</label>
+    <input id="name" placeholder="Enter your full name" aria-label="Full Name">
+    <label for="phone">Mobile Number</label>
+    <input id="phone" placeholder="Enter your mobile number" aria-label="Mobile Number">
+    <label for="email">Email Address</label>
+    <input id="email" type="email" placeholder="Enter your email address" aria-label="Email Address">
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Enter your password" aria-label="Password">
+    <button class="btn btn-blue" onclick="signUp()">Create Account</button>
+    <button class="btn btn-dark" onclick="login()">Login to Account</button>
+    <div class="or">OR CONTINUE WITH</div>
     <button class="btn btn-google" onclick="googleLogin()">Continue with Google</button>
     <p id="msg"></p>
-    <div class="admin-link"><a href="#" onclick="showAdmin()">🔐 Admin Panel - Upload Tools</a></div>
+    <div class="admin-link"><a href="#" onclick="showAdmin()">Admin Panel - Upload Tools</a></div>
   </div>
+  <div class="footer">Bridge Tech Welfare - All Rights Reserved</div>
 </div>
 
-<!-- HOME - USER KO YAHAN TOOLS NAZAR AAYENGE -->
+<!-- HOME -->
 <div class="card" id="homeBox" style="display:none">
-  <div class="top"><div class="logo">✓</div><h1 id="welcomeText">Welcome!</h1><p>Bridge Tech Welfare</p></div>
+  <div class="top"><div class="logo">B</div><h1 id="welcomeText">Welcome</h1><p>Bridge Tech Welfare Member</p></div>
   <div class="form">
-    <a class="link" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t" target="_blank">📢 WhatsApp Channel</a>
-    <a class="link" href="https://youtube.com/@instructor-of-btw" target="_blank">▶️ YouTube - Instructor of BTW</a>
-    <a class="link" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">💬 WhatsApp Group</a>
-    <h3 style="text-align:center">🔥 Latest Tools & Apps</h3>
+    <a class="link" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t" target="_blank">WhatsApp Channel</a>
+    <a class="link" href="https://youtube.com/@instructor-of-btw" target="_blank">YouTube - Instructor of BTW</a>
+    <a class="link" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">WhatsApp Group</a>
+    <h3 class="section-title">Latest Tools and Apps</h3>
     <div id="toolsList"><p style="text-align:center;color:#888">Loading...</p></div>
     <button class="btn btn-dark" onclick="logout()">Logout</button>
   </div>
 </div>
 
-<!-- ADMIN - UPLOAD PANEL -->
+<!-- ADMIN -->
 <div class="card" id="adminBox" style="display:none">
-  <div class="top"><div class="logo">A</div><h1>ADMIN UPLOAD PANEL</h1><p>Extension • Tool • Application Upload</p></div>
+  <div class="top"><div class="logo">A</div><h1>ADMIN UPLOAD PANEL</h1><p>Extension - Tool - Application Upload</p></div>
   <div class="form">
-    <input id="adminEmail" type="email" placeholder="Admin Email">
-    <input id="adminPass" type="password" placeholder="Admin Password">
+    <label for="adminEmail">Admin Email</label>
+    <input id="adminEmail" type="email" placeholder="Enter Admin Email" aria-label="Admin Email">
+    <label for="adminPass">Admin Password</label>
+    <input id="adminPass" type="password" placeholder="Enter Admin Password" aria-label="Admin Password">
     <button class="btn btn-blue" onclick="adminLogin()">Admin Login</button>
     <div id="uploadArea" style="display:none">
-      <hr>
-      <h3 style="text-align:center">📤 New Upload</h3>
-      <input id="toolTitle" placeholder="Title - jaise: CapCut Pro">
-      <select id="toolCat">
-        <option value="Extension">🧩 Extension</option>
-        <option value="Tool">🛠️ Tool</option>
-        <option value="Application">📱 Application</option>
-        <option value="Course">📚 Course</option>
+      <hr style="margin:20px 0;border:none;border-top:1px solid #e2e8f0">
+      <h3 style="text-align:center;color:#0f2a6b">New Upload</h3>
+      <label for="toolTitle">Tool Name / Title</label>
+      <input id="toolTitle" placeholder="Example: CapCut Pro" aria-label="Tool Name">
+      <label for="toolCat">Category</label>
+      <select id="toolCat" aria-label="Category">
+        <option value="Extension">Extension</option>
+        <option value="Tool">Tool</option>
+        <option value="Application">Application</option>
+        <option value="Course">Course</option>
       </select>
-      <textarea id="toolDesc" placeholder="Description likhein..."></textarea>
-      <input id="toolLink" placeholder="Download Link / Drive Link / Website Link">
-      <button class="btn btn-green" onclick="uploadTool()">Upload Now 🚀</button>
-      <p id="uploadMsg" style="text-align:center;color:green"></p>
+      <label for="toolDesc">Description</label>
+      <textarea id="toolDesc" placeholder="Write description here..." aria-label="Description" rows="3"></textarea>
+      <label for="toolLink">Download Link</label>
+      <input id="toolLink" placeholder="Paste Download Link here" aria-label="Download Link">
+      <button class="btn btn-green" onclick="uploadTool()">Upload Now</button>
+      <p id="uploadMsg" role="status"></p>
     </div>
-    <h3>Your Uploads</h3>
+    <h3 class="section-title">Your Uploads</h3>
     <div id="adminList"></div>
     <button class="btn btn-dark" onclick="backToLogin()">Back to Login</button>
     <p id="msg2"></p>
@@ -96,7 +119,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, doc, setDoc, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyD5AWr7FDOUPLUtcbhoMgztIYupXqIaes8",
   authDomain: "bridgetech-welfare.firebaseapp.com",
@@ -106,12 +128,10 @@ const firebaseConfig = {
   appId: "1:271765569707:web:10865d27fe8a9f154377ee",
   measurementId: "G-QWNZGMGL72"
 };
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
-
 async function saveUser(user,name,phone){
   try{ await setDoc(doc(db,"users",user.uid),{name:name||user.displayName||"",phone:phone||"",email:user.email,createdAt:new Date().toISOString()}); }catch(e){}
 }
@@ -129,30 +149,26 @@ window.googleLogin = async()=>{
 window.logout = async()=>{ await signOut(auth); };
 window.showAdmin = ()=>{ document.getElementById('authBox').style.display='none'; document.getElementById('adminBox').style.display='block'; };
 window.backToLogin = ()=>{ document.getElementById('adminBox').style.display='none'; document.getElementById('authBox').style.display='block'; };
-
-// TOOLS LOAD - USER KE LIYE
 async function loadTools(){
   try{
     const snap=await getDocs(query(collection(db,"tools"), orderBy("createdAt","desc")));
     let html="";
-    if(snap.empty) html="<p style='text-align:center;color:#888'>Abhi koi tool upload nahi hua</p>";
+    if(snap.empty) html="<p style='text-align:center;color:#888'>No tool uploaded yet</p>";
     snap.forEach(d=>{
       const t=d.data();
-      html+=`<div class="toolBox"><b>${t.title}</b> <span class="cat">${t.category}</span><p>${t.desc||""}</p><a class="downBtn" href="${t.link}" target="_blank">⬇️ Download / Open</a></div>`;
+      html+=`<div class="toolBox"><b>${t.title}</b> <span class="cat">${t.category}</span><p>${t.desc||""}</p><a class="downBtn" href="${t.link}" target="_blank">Download / Open</a></div>`;
     });
     document.getElementById('toolsList').innerHTML=html;
     document.getElementById('adminList').innerHTML=html;
-  }catch(e){ console.log(e); }
+  }catch(e){}
 }
-
-// ADMIN LOGIN + UPLOAD
 window.adminLogin = async()=>{
   const email=document.getElementById('adminEmail').value, pass=document.getElementById('adminPass').value;
-  if(email!=="bridgetechwelfare@gmail.com"){ document.getElementById('msg2').innerText="Only Admin Allowed!"; return; }
+  if(email!=="bridgetechwelfare@gmail.com"){ document.getElementById('msg2').innerText="Only Admin Allowed"; return; }
   try{
     await signInWithEmailAndPassword(auth,email,pass);
     document.getElementById('uploadArea').style.display='block';
-    document.getElementById('msg2').innerText="Admin Login Success! Ab upload karein.";
+    document.getElementById('msg2').innerText="Admin Login Success. Now you can upload.";
     loadTools();
   }catch(e){ document.getElementById('msg2').innerText=e.message; }
 };
@@ -161,21 +177,20 @@ window.uploadTool = async()=>{
   const cat=document.getElementById('toolCat').value;
   const desc=document.getElementById('toolDesc').value;
   const link=document.getElementById('toolLink').value;
-  if(!title || !link){ alert("Title aur Link zaroori hai!"); return; }
+  if(!title || !link){ alert("Title and Link are required"); return; }
   try{
     await addDoc(collection(db,"tools"),{title:title,category:cat,desc:desc,link:link,createdAt:new Date().toISOString()});
-    document.getElementById('uploadMsg').innerText="Upload Ho Gaya! ✅";
+    document.getElementById('uploadMsg').innerText="Upload Successful";
     document.getElementById('toolTitle').value=""; document.getElementById('toolDesc').value=""; document.getElementById('toolLink').value="";
     loadTools();
   }catch(e){ document.getElementById('uploadMsg').innerText=e.message; }
 };
-
 onAuthStateChanged(auth,(user)=>{
   if(user){
     if(document.getElementById('adminBox').style.display==='block') return;
     document.getElementById('authBox').style.display='none';
     document.getElementById('homeBox').style.display='block';
-    document.getElementById('welcomeText').innerText="Welcome! "+(user.displayName||user.email);
+    document.getElementById('welcomeText').innerText="Welcome "+(user.displayName||user.email);
     loadTools();
   }else{
     document.getElementById('authBox').style.display='block';
