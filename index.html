@@ -7,975 +7,139 @@
 <meta name="theme-color" content="#0f2a6b">
 <title>Bridge Tech Welfare | Official Member Portal</title>
 <style>
-  :root{
-    --blue-900:#0b1f4d;
-    --blue-700:#0f2a6b;
-    --blue-500:#1a56db;
-    --green-600:#15803d;
-    --ink:#0f172a;
-    --muted:#475569;
-    --line:#e2e8f0;
-    --danger:#b91c1c;
-    --focus:#f59e0b;
-    --radius:14px;
+  :root {    
+    --blue-900: #0b1f4d;    
+    --blue-700: #0f2a6b;    
+    --blue-500: #1a56db;    
+    --green-600: #15803d;    
+    --ink: #0f172a;    
+    --muted: #475569;    
+    --line: #e2e8f0;    
+    --danger: #b91c1c;    
+    --focus: #f59e0b;    
+    --radius: 14px;  
   }
-
-  *{box-sizing:border-box}
-
-  html,body{min-height:100%}
-
-  body{
-    margin:0;
-    font-family:"Segoe UI",Tahoma,system-ui,-apple-system,Arial,sans-serif;
-    line-height:1.55;
-    color:var(--ink);
-    background:
-      radial-gradient(1100px 560px at 8% 0%, #dbeafe 0%, transparent 55%),
-      radial-gradient(900px 520px at 100% 100%, #dcfce7 0%, transparent 50%),
-      #eef2f7;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px 16px;
+  * { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+  body {    
+    margin: 0;    
+    font-family: "Segoe UI", Tahoma, system-ui, -apple-system, Arial, sans-serif;    
+    line-height: 1.55;    
+    color: var(--ink);    
+    background: radial-gradient(1100px 560px at 8% 0%, #dbeafe 0%, transparent 55%),      
+                radial-gradient(900px 520px at 100% 100%, #dcfce7 0%, transparent 50%),
+                #eef2f7;    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
-
-  [hidden]{display:none !important}
-
-  /* ---------- Accessibility helpers ---------- */
-  .sr-only{
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
-    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
+    padding: 30px;
+    border: 1px solid var(--line);
   }
-  :focus-visible{
-    outline:3px solid var(--focus);
-    outline-offset:2px;
-    border-radius:6px;
+  .logo-area {
+    text-align: center;
+    margin-bottom: 24px;
   }
-  @media (prefers-reduced-motion:reduce){
-    *{animation:none !important;transition:none !important}
+  .logo-area h1 {
+    font-size: 22px;
+    color: var(--blue-700);
+    margin: 0 0 6px 0;
   }
-
-  /* ---------- Card ---------- */
-  .card{
-    background:#fff;
-    width:100%;
-    max-width:480px;
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 24px 60px -22px rgba(15,42,107,.45), 0 0 0 1px rgba(15,42,107,.06);
-    animation:rise .35s ease both;
+  .logo-area p {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
   }
-  @keyframes rise{
-    from{opacity:0;transform:translateY(12px)}
-    to{opacity:1;transform:none}
+  /* Buttons container instead of tabs */
+  .auth-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
   }
-
-  /* ---------- Header ---------- */
-  .top{
-    background:linear-gradient(135deg,var(--blue-900) 0%,var(--blue-500) 100%);
-    color:#fff;
-    padding:30px 24px 26px;
-    text-align:center;
-    position:relative;
+  .auth-btn {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid var(--blue-700);
   }
-  .logo{
-    width:68px;height:68px;
-    background:#fff;
-    color:var(--blue-700);
-    border-radius:50%;
-    display:grid;place-items:center;
-    font-size:32px;font-weight:900;
-    margin:0 auto;
-    box-shadow:0 8px 22px rgba(0,0,0,.28);
+  .auth-btn.login {
+    background: var(--blue-700);
+    color: #ffffff;
   }
-  .top h1{
-    margin:14px 0 4px;
-    font-size:21px;
-    letter-spacing:.4px;
-    line-height:1.3;
+  .auth-btn.login:hover {
+    background: var(--blue-900);
   }
-  .top p{
-    margin:0;
-    opacity:.9;
-    font-size:13.5px;
+  .auth-btn.register {
+    background: transparent;
+    color: var(--blue-700);
   }
-  .badge{
-    display:inline-block;
-    margin-top:12px;
-    background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.28);
-    color:#fff;
-    font-size:11.5px;
-    font-weight:700;
-    letter-spacing:.6px;
-    text-transform:uppercase;
-    padding:5px 12px;
-    border-radius:999px;
+  .auth-btn.register:hover {
+    background: #f1f5f9;
   }
-
-  /* ---------- Form body ---------- */
-  .form{padding:24px}
-
-  label{
-    display:block;
-    font-weight:700;
-    font-size:14px;
-    color:#1e293b;
-    margin:14px 0 5px;
+  .links-section {
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    text-align: center;
   }
-  .hint{
-    display:block;
-    font-weight:400;
-    font-size:12.5px;
-    color:var(--muted);
-    margin-top:2px;
+  .links-section a {
+    display: inline-block;
+    color: var(--blue-500);
+    text-decoration: none;
+    font-weight: 500;
+    margin: 6px 12px;
+    font-size: 14px;
   }
-
-  input,select,textarea{
-    width:100%;
-    padding:13px 14px;
-    border:1.5px solid #cbd5e1;
-    border-radius:12px;
-    font-size:16px;              /* 16px = iOS zoom fix */
-    font-family:inherit;
-    color:var(--ink);
-    background:#f8fafc;
-    transition:border-color .15s, box-shadow .15s, background .15s;
+  .links-section a:hover {
+    text-decoration: underline;
   }
-  input:hover,select:hover,textarea:hover{border-color:#94a3b8}
-  input:focus,select:focus,textarea:focus{
-    border-color:var(--blue-500);
-    background:#fff;
-    box-shadow:0 0 0 4px rgba(26,86,219,.14);
-    outline:none;
-  }
-  textarea{resize:vertical;min-height:80px}
-
-  /* ---------- Buttons ---------- */
-  .btn{
-    width:100%;
-    padding:14px;
-    margin-top:10px;
-    border:1.5px solid transparent;
-    border-radius:12px;
-    font-size:15.5px;
-    font-weight:700;
-    font-family:inherit;
-    cursor:pointer;
-    transition:background .18s, transform .08s, box-shadow .18s;
-  }
-  .btn:active{transform:translateY(1px)}
-  .btn-primary{background:var(--blue-500);color:#fff}
-  .btn-primary:hover{background:var(--blue-700)}
-  .btn-dark{background:var(--ink);color:#fff}
-  .btn-dark:hover{background:#1e293b}
-  .btn-green{background:var(--green-600);color:#fff}
-  .btn-green:hover{background:#166534}
-  .btn-google{
-    background:#fff;color:#1e293b;border-color:#cbd5e1;
-    display:flex;align-items:center;justify-content:center;gap:10px;
-  }
-  .btn-google:hover{background:#f8fafc;border-color:#94a3b8}
-  .btn-sm{
-    width:auto;
-    padding:9px 16px;
-    font-size:13.5px;
-    margin-top:8px;
-    background:#fee2e2;
-    color:var(--danger);
-    border-color:#fecaca;
-  }
-  .btn-sm:hover{background:#fecaca}
-
-  .or{
-    text-align:center;
-    color:#94a3b8;
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.8px;
-    margin:18px 0 4px;
-  }
-
-  .msg{
-    min-height:20px;
-    font-size:13.5px;
-    text-align:center;
-    margin:12px 0 0;
-    font-weight:600;
-  }
-  .msg.error{color:var(--danger)}
-  .msg.ok{color:var(--green-600)}
-
-  /* ---------- Tabs ---------- */
-  .tabs{
-    display:flex;
-    gap:6px;
-    background:#eef2f7;
-    padding:5px;
-    border-radius:14px;
-    margin-bottom:6px;
-  }
-  .tab{
-    flex:1;
-    padding:11px 8px;
-    border:0;
-    background:transparent;
-    border-radius:10px;
-    font-size:14.5px;
-    font-weight:700;
-    font-family:inherit;
-    color:var(--muted);
-    cursor:pointer;
-    transition:background .18s, color .18s;
-  }
-  .tab:hover{color:var(--blue-700)}
-  .tab[aria-selected="true"]{
-    background:#fff;
-    color:var(--blue-700);
-    box-shadow:0 2px 10px rgba(15,42,107,.14);
-  }
-
-  /* ---------- Home ---------- */
-  .greet{
-    font-size:14px;
-    font-weight:700;
-    margin-top:6px !important;
-    opacity:1 !important;
-  }
-  .links{
-    display:grid;
-    gap:10px;
-    margin-bottom:6px;
-  }
-  .link{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:14px 16px;
-    background:#eff6ff;
-    border:1px solid #dbeafe;
-    border-radius:12px;
-    text-decoration:none;
-    color:var(--blue-500);
-    font-weight:700;
-    font-size:14.5px;
-    transition:background .18s, transform .1s;
-  }
-  .link:hover{background:#dbeafe}
-  .link:active{transform:scale(.995)}
-  .link .dot{
-    width:9px;height:9px;border-radius:50%;
-    background:var(--blue-500);
-    flex:none;
-  }
-
-  .section-title{
-    text-align:center;
-    color:var(--blue-700);
-    font-size:17.5px;
-    margin:22px 0 10px;
-  }
-
-  /* ---------- Search ---------- */
-  .searchWrap{position:relative;margin:0 0 8px}
-  .searchWrap input{padding-left:44px}
-  .searchWrap .icon{
-    position:absolute;
-    left:15px;top:50%;
-    transform:translateY(-50%);
-    color:#94a3b8;
-    pointer-events:none;
-    font-size:16px;
-  }
-  .count{
-    font-size:12.5px;
-    color:var(--muted);
-    text-align:center;
-    margin:0 0 12px;
-    min-height:16px;
-  }
-
-  /* ---------- Tool cards ---------- */
-  .toolBox{
-    background:#f8fafc;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:15px;
-    margin-bottom:12px;
-    text-align:left;
-    transition:border-color .18s, box-shadow .18s;
-  }
-  .toolBox:hover{
-    border-color:#c7d7f5;
-    box-shadow:0 6px 18px -10px rgba(15,42,107,.4);
-  }
-  .toolHead{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:10px;
-    flex-wrap:wrap;
-  }
-  .toolHead h3{
-    margin:0;
-    font-size:15.5px;
-    color:var(--ink);
-    word-break:break-word;
-  }
-  .toolBox p{
-    margin:8px 0 0;
-    font-size:13.5px;
-    color:var(--muted);
-    word-break:break-word;
-  }
-  .cat{
-    background:var(--blue-500);
-    color:#fff;
-    padding:3px 11px;
-    border-radius:999px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:.3px;
-    white-space:nowrap;
-    flex:none;
-  }
-  .downBtn{
-    display:block;
-    text-align:center;
-    background:var(--green-600);
-    color:#fff;
-    padding:11px;
-    border-radius:10px;
-    text-decoration:none;
-    margin-top:12px;
-    font-weight:700;
-    font-size:14px;
-    transition:background .18s;
-  }
-  .downBtn:hover{background:#166534}
-
-  .empty{
-    text-align:center;
-    color:#94a3b8;
-    font-size:13.5px;
-    padding:22px 10px;
-    margin:0;
-    background:#f8fafc;
-    border:1px dashed var(--line);
-    border-radius:var(--radius);
-  }
-
-  /* ---------- Misc ---------- */
-  hr.sep{
-    margin:22px 0;
-    border:none;
-    border-top:1px solid var(--line);
-  }
-  .admin-link{
-    text-align:center;
-    margin-top:18px;
-    padding-top:16px;
-    border-top:1px solid var(--line);
-  }
-  .admin-link a{
-    color:var(--muted);
-    font-size:13.5px;
-    font-weight:600;
-    text-decoration:none;
-  }
-  .admin-link a:hover{color:var(--blue-700);text-decoration:underline}
-
-  .footer{
-    text-align:center;
-    color:#94a3b8;
-    font-size:12px;
-    padding:0 20px 18px;
+  .footer-text {
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 20px;
   }
 </style>
 </head>
 <body>
 
-<main>
-
-  <!-- ================= LOGIN / SIGNUP ================= -->
-  <section class="card" id="authBox" aria-labelledby="authHeading">
-    <header class="top">
-      <div class="logo" aria-hidden="true">B</div>
-      <h1 id="authHeading">BRIDGE TECH WELFARE</h1>
-      <p>Official Member Portal — Learn • Earn • Grow</p>
-      <span class="badge">Secure Member Access</span>
-    </header>
-
-    <div class="form">
-      <div class="tabs" role="tablist" aria-label="Account access">
-        <button class="tab" id="tabLogin" role="tab" aria-selected="true"
-                aria-controls="panelLogin" tabindex="0">Login</button>
-        <button class="tab" id="tabSignup" role="tab" aria-selected="false"
-                aria-controls="panelSignup" tabindex="-1">Create Account</button>
-      </div>
-
-      <!-- LOGIN PANEL -->
-      <div id="panelLogin" role="tabpanel" aria-labelledby="tabLogin" tabindex="0">
-        <label for="loginEmail">Email Address</label>
-        <input id="loginEmail" type="email" inputmode="email" autocomplete="email"
-               placeholder="you@example.com">
-
-        <label for="loginPassword">Password</label>
-        <input id="loginPassword" type="password" autocomplete="current-password"
-               placeholder="Enter your password">
-
-        <button class="btn btn-primary" id="btnLogin" type="button">Login to Account</button>
-
-        <p class="or">OR CONTINUE WITH</p>
-        <button class="btn btn-google" id="btnGoogle" type="button">
-          <span aria-hidden="true">🔵</span> Continue with Google
-        </button>
-      </div>
-
-      <!-- SIGNUP PANEL -->
-      <div id="panelSignup" role="tabpanel" aria-labelledby="tabSignup" tabindex="0" hidden>
-        <label for="signupName">Full Name</label>
-        <input id="signupName" type="text" autocomplete="name" placeholder="Enter your full name">
-
-        <label for="signupPhone">Mobile Number</label>
-        <input id="signupPhone" type="tel" inputmode="tel" autocomplete="tel"
-               placeholder="03xx-xxxxxxx">
-
-        <label for="signupEmail">Email Address</label>
-        <input id="signupEmail" type="email" inputmode="email" autocomplete="email"
-               placeholder="you@example.com">
-
-        <label for="signupPassword">
-          Password
-          <span class="hint">Minimum 6 characters</span>
-        </label>
-        <input id="signupPassword" type="password" autocomplete="new-password"
-               placeholder="Create a password">
-
-        <button class="btn btn-primary" id="btnSignup" type="button">Create Account</button>
-
-        <p class="or">OR CONTINUE WITH</p>
-        <button class="btn btn-google" id="btnGoogle2" type="button">
-          <span aria-hidden="true">🔵</span> Continue with Google
-        </button>
-      </div>
-
-      <p class="msg" id="authMsg" role="alert" aria-live="assertive"></p>
-
-      <div class="admin-link">
-        <a href="#" id="adminLink">Admin Panel — Upload Tools</a>
-      </div>
+  <div class="card">
+    <div class="logo-area">
+      <h1>Bridge Tech Welfare</h1>
+      <p>Official Member Portal</p>
     </div>
 
-    <p class="footer">© <span id="year"></span> Bridge Tech Welfare — All Rights Reserved</p>
-  </section>
-
-  <!-- ================= HOME ================= -->
-  <section class="card" id="homeBox" aria-labelledby="welcomeText" hidden>
-    <header class="top">
-      <div class="logo" aria-hidden="true">B</div>
-      <h1 id="welcomeText">Welcome</h1>
-      <p class="greet" id="greetingText">Bridge Tech Welfare Member</p>
-    </header>
-
-    <div class="form">
-      <nav class="links" aria-label="Community links">
-        <a class="link" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t"
-           target="_blank" rel="noopener noreferrer">
-          <span class="dot" aria-hidden="true"></span> WhatsApp Channel
-        </a>
-        <a class="link" href="https://youtube.com/@instructor-of-btw"
-           target="_blank" rel="noopener noreferrer">
-          <span class="dot" aria-hidden="true"></span> YouTube — Instructor of BTW
-        </a>
-        <a class="link" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n"
-           target="_blank" rel="noopener noreferrer">
-          <span class="dot" aria-hidden="true"></span> WhatsApp Group
-        </a>
-      </nav>
-
-      <h2 class="section-title">Latest Tools &amp; Apps</h2>
-
-      <div class="searchWrap">
-        <span class="icon" aria-hidden="true">🔍</span>
-        <label class="sr-only" for="toolSearch">Search tools, apps and courses</label>
-        <input id="toolSearch" type="search" placeholder="Search tools, apps, courses…"
-               aria-describedby="searchHint" autocomplete="off">
-      </div>
-      <p class="sr-only" id="searchHint">The list below filters automatically as you type.</p>
-      <p class="count" id="resultCount" aria-live="polite"></p>
-
-      <div id="toolsList">
-        <p class="empty">Loading…</p>
-      </div>
-
-      <button class="btn btn-dark" id="btnLogout" type="button">Logout</button>
+    <!-- Login & Create Account Buttons (Replaced Tabs) -->
+    <div class="auth-buttons">
+      <a href="#login" class="auth-btn login" onclick="alert('Login form integration goes here.')">Login</a>
+      <a href="#register" class="auth-btn register" onclick="alert('Registration form integration goes here.')">Create Account</a>
     </div>
 
-    <p class="footer">© <span class="year"></span> Bridge Tech Welfare — All Rights Reserved</p>
-  </section>
-
-  <!-- ================= ADMIN ================= -->
-  <section class="card" id="adminBox" aria-labelledby="adminHeading" hidden>
-    <header class="top">
-      <div class="logo" aria-hidden="true">A</div>
-      <h1 id="adminHeading">ADMIN UPLOAD PANEL</h1>
-      <p>Extension • Tool • Application Upload</p>
-    </header>
-
-    <div class="form">
-      <label for="adminEmail">Admin Email</label>
-      <input id="adminEmail" type="email" inputmode="email" autocomplete="username"
-             placeholder="Enter admin email">
-
-      <label for="adminPass">Admin Password</label>
-      <input id="adminPass" type="password" autocomplete="current-password"
-             placeholder="Enter admin password">
-
-      <button class="btn btn-primary" id="btnAdminLogin" type="button">Admin Login</button>
-
-      <div id="uploadArea" hidden>
-        <hr class="sep">
-        <h2 class="section-title" style="margin-top:0">New Upload</h2>
-
-        <label for="toolTitle">Tool Name / Title</label>
-        <input id="toolTitle" type="text" placeholder="Example: CapCut Pro">
-
-        <label for="toolCat">Category</label>
-        <select id="toolCat">
-          <option value="Extension">Extension</option>
-          <option value="Tool">Tool</option>
-          <option value="Application">Application</option>
-          <option value="Course">Course</option>
-        </select>
-
-        <label for="toolDesc">Description</label>
-        <textarea id="toolDesc" rows="3" placeholder="Write a short description…"></textarea>
-
-        <label for="toolLink">Download Link</label>
-        <input id="toolLink" type="url" inputmode="url" placeholder="https://…">
-
-        <button class="btn btn-green" id="btnUpload" type="button">Upload Now</button>
-        <p class="msg ok" id="uploadMsg" role="status" aria-live="polite"></p>
-      </div>
-
-      <h2 class="section-title">Your Uploads</h2>
-      <div id="adminList"></div>
-
-      <p class="msg error" id="adminMsg" role="alert" aria-live="assertive"></p>
-
-      <button class="btn btn-dark" id="btnAdminBack" type="button">Back to Login</button>
+    <!-- Community & Useful Links -->
+    <div class="links-section">
+      <a href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">WhatsApp Community</a>
+      <a href="https://bridgetechwelfare-web.github.io/" target="_blank">Portal Home</a>
     </div>
+  </div>
 
-    <p class="footer">© <span class="year"></span> Bridge Tech Welfare — All Rights Reserved</p>
-  </section>
+  <div class="footer-text">
+    &copy; 2026 Bridge Tech Welfare. All rights reserved.
+  </div>
 
-</main>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {
-  getFirestore, doc, getDoc, setDoc, collection, addDoc,
-  getDocs, query, orderBy, deleteDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-/* ------------------------------------------------------------------ */
-/*  FIREBASE INIT                                                      */
-/* ------------------------------------------------------------------ */
-const firebaseConfig = {
-  apiKey: "AIzaSyD5AWr7FDOUPLUtcbhoMgztIYupXqIaes8",
-  authDomain: "bridgetech-welfare.firebaseapp.com",
-  projectId: "bridgetech-welfare",
-  storageBucket: "bridgetech-welfare.firebasestorage.app",
-  messagingSenderId: "271765569707",
-  appId: "1:271765569707:web:10865d27fe8a9f154377ee",
-  measurementId: "G-QWNZGMGL72"
-};
-
-const app      = initializeApp(firebaseConfig);
-const auth     = getAuth(app);
-const db       = getFirestore(app);
-const provider = new GoogleAuthProvider();
-
-const ADMIN_EMAIL = "bridgetechwelfare@gmail.com";
-
-/* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
-/* ------------------------------------------------------------------ */
-const $ = (id) => document.getElementById(id);
-
-/** HTML escape — prevents XSS from uploaded tool titles/descriptions */
-const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({
-  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-}[c]));
-
-/** Only allow http/https links */
-function safeUrl(u) {
-  try {
-    const url = new URL(String(u), location.href);
-    return (url.protocol === "http:" || url.protocol === "https:") ? url.href : "#";
-  } catch { return "#"; }
-}
-
-/** Time-based greeting */
-function greeting() {
-  const h = new Date().getHours();
-  if (h < 5)  return { text: "Good Night",     emoji: "🌙" };
-  if (h < 12) return { text: "Good Morning",   emoji: "☀️" };
-  if (h < 17) return { text: "Good Afternoon", emoji: "🌤️" };
-  if (h < 21) return { text: "Good Evening",   emoji: "🌆" };
-  return       { text: "Good Night",     emoji: "🌙" };
-}
-
-function setMsg(el, text, type = "error") {
-  el.textContent = text;
-  el.className = "msg " + type;
-}
-
-function clearMsg(el) {
-  el.textContent = "";
-  el.className = "msg";
-}
-
-/* ------------------------------------------------------------------ */
-/*  ELEMENT REFS                                                       */
-/* ------------------------------------------------------------------ */
-const authBox    = $("authBox");
-const homeBox    = $("homeBox");
-const adminBox   = $("adminBox");
-const authMsg    = $("authMsg");
-const adminMsg   = $("adminMsg");
-const uploadMsg  = $("uploadMsg");
-const toolsList  = $("toolsList");
-const adminList  = $("adminList");
-const resultCount = $("resultCount");
-const searchInput = $("toolSearch");
-
-let allTools    = [];      // cached list
-let isAdminView = false;   // guard for onAuthStateChanged
-
-document.getElementById("year").textContent = new Date().getFullYear();
-document.querySelectorAll(".year").forEach(el => el.textContent = new Date().getFullYear());
-
-/* ------------------------------------------------------------------ */
-/*  VIEW SWITCHING                                                     */
-/* ------------------------------------------------------------------ */
-function showAuth() {
-  authBox.hidden  = false;
-  homeBox.hidden  = true;
-  adminBox.hidden = true;
-}
-
-function showHome(user) {
-  authBox.hidden  = true;
-  adminBox.hidden = true;
-  homeBox.hidden  = false;
-  greetUser(user);
-  loadTools();
-}
-
-function showAdmin() {
-  isAdminView     = true;
-  authBox.hidden  = true;
-  homeBox.hidden  = true;
-  adminBox.hidden = false;
-  clearMsg(adminMsg);
-}
-
-/* Greeting + welcome name */
-async function greetUser(user) {
-  let name = user.displayName || "";
-
-  try {
-    const snap = await getDoc(doc(db, "users", user.uid));
-    if (snap.exists() && snap.data().name) name = snap.data().name;
-  } catch { /* ignore */ }
-
-  if (!name) name = (user.email || "Member").split("@")[0];
-
-  const firstName = name.trim().split(/\s+/)[0];
-  const g = greeting();
-
-  $("welcomeText").textContent  = `${g.emoji} ${g.text}, ${firstName}!`;
-  $("greetingText").textContent = "Bridge Tech Welfare — Member Portal";
-}
-
-/* ------------------------------------------------------------------ */
-/*  TABS                                                               */
-/* ------------------------------------------------------------------ */
-const tabs = [$("tabLogin"), $("tabSignup")];
-
-function selectTab(index) {
-  tabs.forEach((tab, i) => {
-    const selected = i === index;
-    tab.setAttribute("aria-selected", String(selected));
-    tab.tabIndex = selected ? 0 : -1;
-    $(tab.getAttribute("aria-controls")).hidden = !selected;
-  });
-  clearMsg(authMsg);
-}
-
-tabs.forEach((tab, i) => {
-  tab.addEventListener("click", () => selectTab(i));
-  tab.addEventListener("keydown", (e) => {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
-    e.preventDefault();
-    const next = e.key === "ArrowRight"
-      ? (i + 1) % tabs.length
-      : (i - 1 + tabs.length) % tabs.length;
-    selectTab(next);
-    tabs[next].focus();
-  });
-});
-
-/* ------------------------------------------------------------------ */
-/*  AUTH ACTIONS                                                       */
-/* ------------------------------------------------------------------ */
-async function saveUser(user, name, phone) {
-  try {
-    await setDoc(doc(db, "users", user.uid), {
-      name:  name  || user.displayName || "",
-      phone: phone || "",
-      email: user.email,
-      createdAt: new Date().toISOString()
-    }, { merge: true });
-  } catch (e) {
-    console.warn("Profile save failed:", e.message);
-  }
-}
-
-$("btnSignup").addEventListener("click", async () => {
-  clearMsg(authMsg);
-  const name  = $("signupName").value.trim();
-  const phone = $("signupPhone").value.trim();
-  const email = $("signupEmail").value.trim();
-  const pass  = $("signupPassword").value;
-
-  if (!name)  return setMsg(authMsg, "Please enter your full name.");
-  if (!email) return setMsg(authMsg, "Please enter your email address.");
-  if (pass.length < 6) return setMsg(authMsg, "Password must be at least 6 characters.");
-
-  try {
-    const cred = await createUserWithEmailAndPassword(auth, email, pass);
-    await saveUser(cred.user, name, phone);
-  } catch (e) {
-    setMsg(authMsg, friendlyAuthError(e));
-  }
-});
-
-$("btnLogin").addEventListener("click", async () => {
-  clearMsg(authMsg);
-  const email = $("loginEmail").value.trim();
-  const pass  = $("loginPassword").value;
-
-  if (!email || !pass) return setMsg(authMsg, "Please enter your email and password.");
-
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-  } catch (e) {
-    setMsg(authMsg, friendlyAuthError(e));
-  }
-});
-
-async function googleLogin() {
-  clearMsg(authMsg);
-  try {
-    const cred = await signInWithPopup(auth, provider);
-    await saveUser(cred.user, "", "");
-  } catch (e) {
-    setMsg(authMsg, friendlyAuthError(e));
-  }
-}
-$("btnGoogle").addEventListener("click", googleLogin);
-$("btnGoogle2").addEventListener("click", googleLogin);
-
-$("btnLogout").addEventListener("click", async () => {
-  await signOut(auth);
-});
-
-function friendlyAuthError(e) {
-  const code = e?.code || "";
-  if (code.includes("email-already-in-use")) return "This email is already registered. Please login instead.";
-  if (code.includes("invalid-email"))        return "That email address doesn't look valid.";
-  if (code.includes("weak-password"))        return "Password is too weak. Use at least 6 characters.";
-  if (code.includes("user-not-found"))       return "No account found with this email.";
-  if (code.includes("wrong-password") || code.includes("invalid-credential"))
-    return "Incorrect email or password.";
-  if (code.includes("too-many-requests"))    return "Too many attempts. Please try again later.";
-  if (code.includes("popup-closed-by-user")) return "Google sign-in was cancelled.";
-  return e?.message || "Something went wrong. Please try again.";
-}
-
-/* ------------------------------------------------------------------ */
-/*  ADMIN                                                              */
-/* ------------------------------------------------------------------ */
-$("adminLink").addEventListener("click", (e) => {
-  e.preventDefault();
-  showAdmin();
-});
-
-$("btnAdminBack").addEventListener("click", async () => {
-  isAdminView = false;
-  $("uploadArea").hidden = true;
-  showAuth();
-  if (auth.currentUser) await signOut(auth);
-});
-
-$("btnAdminLogin").addEventListener("click", async () => {
-  clearMsg(adminMsg);
-  const email = $("adminEmail").value.trim();
-  const pass  = $("adminPass").value;
-
-  if (email.toLowerCase() !== ADMIN_EMAIL) {
-    return setMsg(adminMsg, "Only the official admin account is allowed here.");
-  }
-  if (!pass) return setMsg(adminMsg, "Please enter the admin password.");
-
-  try {
-    await signInWithEmailAndPassword(auth, email, pass);
-    $("uploadArea").hidden = false;
-    setMsg(adminMsg, "Admin login successful — you can upload now.", "ok");
-    loadTools();
-  } catch (e) {
-    setMsg(adminMsg, friendlyAuthError(e));
-  }
-});
-
-$("btnUpload").addEventListener("click", async () => {
-  clearMsg(uploadMsg);
-
-  const title = $("toolTitle").value.trim();
-  const cat   = $("toolCat").value;
-  const desc  = $("toolDesc").value.trim();
-  const link  = $("toolLink").value.trim();
-
-  if (!title) return setMsg(uploadMsg, "Tool name is required.");
-  if (!link)  return setMsg(uploadMsg, "Download link is required.");
-  if (safeUrl(link) === "#") return setMsg(uploadMsg, "Please enter a valid http/https link.");
-
-  try {
-    await addDoc(collection(db, "tools"), {
-      title, category: cat, desc, link,
-      createdAt: new Date().toISOString()
-    });
-    setMsg(uploadMsg, "✅ Upload successful!", "ok");
-    $("toolTitle").value = "";
-    $("toolDesc").value  = "";
-    $("toolLink").value  = "";
-    loadTools();
-  } catch (e) {
-    setMsg(uploadMsg, e.message);
-  }
-});
-
-/* ------------------------------------------------------------------ */
-/*  DATA LOADING + RENDERING                                           */
-/* ------------------------------------------------------------------ */
-async function loadTools() {
-  try {
-    const snap = await getDocs(query(collection(db, "tools"), orderBy("createdAt", "desc")));
-    allTools = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderTools();
-    renderAdminList();
-  } catch (e) {
-    console.error(e);
-    toolsList.innerHTML = `<p class="empty">Could not load tools right now. Please try again later.</p>`;
-    resultCount.textContent = "";
-  }
-}
-
-function renderTools() {
-  const q = searchInput.value.trim().toLowerCase();
-
-  const items = allTools.filter(t => {
-    if (!q) return true;
-    return `${t.title || ""} ${t.category || ""} ${t.desc || ""}`
-      .toLowerCase().includes(q);
-  });
-
-  if (allTools.length === 0) {
-    toolsList.innerHTML = `<p class="empty">No tools uploaded yet. Please check back soon.</p>`;
-    resultCount.textContent = "";
-    return;
-  }
-
-  if (items.length === 0) {
-    toolsList.innerHTML = `<p class="empty">No results found for “${esc(q)}”. Try another keyword.</p>`;
-    resultCount.textContent = "0 results found.";
-    return;
-  }
-
-  toolsList.innerHTML = items.map(t => `
-    <article class="toolBox">
-      <div class="toolHead">
-        <h3>${esc(t.title)}</h3>
-        <span class="cat">${esc(t.category)}</span>
-      </div>
-      ${t.desc ? `<p>${esc(t.desc)}</p>` : ""}
-      <a class="downBtn" href="${safeUrl(t.link)}" target="_blank" rel="noopener noreferrer">
-        Download / Open<span class="sr-only"> ${esc(t.title)}</span>
-      </a>
-    </article>
-  `).join("");
-
-  resultCount.textContent =
-    `Showing ${items.length} of ${allTools.length} item${allTools.length > 1 ? "s" : ""}.`;
-}
-
-function renderAdminList() {
-  if (allTools.length === 0) {
-    adminList.innerHTML = `<p class="empty">Nothing uploaded yet.</p>`;
-    return;
-  }
-  adminList.innerHTML = allTools.map(t => `
-    <div class="toolBox">
-      <div class="toolHead">
-        <h3>${esc(t.title)}</h3>
-        <span class="cat">${esc(t.category)}</span>
-      </div>
-      ${t.desc ? `<p>${esc(t.desc)}</p>` : ""}
-      <button class="btn btn-sm" type="button" data-del="${esc(t.id)}">
-        Delete<span class="sr-only"> ${esc(t.title)}</span>
-      </button>
-    </div>
-  `).join("");
-}
-
-/* Search — filters as you type */
-searchInput.addEventListener("input", renderTools);
-
-/* Delete via event delegation */
-adminList.addEventListener("click", async (e) => {
-  const btn = e.target.closest("[data-del]");
-  if (!btn) return;
-  if (!confirm("Delete this item permanently?")) return;
-  clearMsg(adminMsg);
-  try {
-    await deleteDoc(doc(db, "tools", btn.dataset.del));
-    setMsg(adminMsg, "Item deleted.", "ok");
-    loadTools();
-  } catch (err) {
-    setMsg(adminMsg, err.message);
-  }
-});
-
-/* ------------------------------------------------------------------ */
-/*  AUTH STATE                                                         */
-/* ------------------------------------------------------------------ */
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    if (isAdminView) return;      // admin already on his panel
-    showHome(user);
-  } else {
-    if (isAdminView) return;      // stay on admin login screen
-    showAuth();
-  }
-});
-</script>
 </body>
 </html>
