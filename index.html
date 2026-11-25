@@ -1,183 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bridge Tech Welfare - Free Apps, Tutorials & Podcasts For Blind People | Technology Ab Sab Ke Liye Hai</title>
-<meta name="description" content="Bridge Tech Welfare - Free accessible apps, Android tutorials, podcasts and help for blind and visually impaired people. Created by Ch AbdulRafay. Technology Ab Sab Ke Liye Hai.">
+<title>Bridge Tech Welfare - Plugins & Tools</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; font-size:20px; line-height:1.8; background:#ffffff; color:#000000; }
-a { color:#0044cc; font-weight:bold; }
-a:focus, button:focus, input:focus { outline:4px solid #ffcc00; outline-offset:2px; }
-.skip { position:absolute; left:-9999px; }
-.skip:focus { position:static; background:#ffcc00; color:#000; padding:10px; display:block; text-align:center; }
-header { background:#000000; color:#ffffff; padding:35px 20px; text-align:center; }
-header h1 { font-size:42px; margin-bottom:10px; }
-header p { font-size:22px; color:#ffcc00; }
-nav { background:#0044cc; padding:15px; text-align:center; }
-nav a { color:#fff; margin:0 12px; text-decoration:none; font-size:20px; }
-nav a:hover { text-decoration:underline; }
-.search-box { background:#f2f2f2; padding:25px 20px; text-align:center; }
-.search-box input { width:90%; max-width:600px; padding:15px; font-size:20px; border:3px solid #000; border-radius:10px; }
-.search-box button { padding:15px 30px; font-size:20px; background:#000; color:#fff; border:none; border-radius:10px; margin-top:10px; cursor:pointer; }
-main { max-width:900px; margin:auto; padding:20px; }
-section { margin-bottom:40px; border-bottom:2px solid #ddd; padding-bottom:30px; }
-h2 { font-size:30px; margin-bottom:15px; color:#000; border-left:8px solid #ffcc00; padding-left:12px; }
-h3 { font-size:24px; margin:20px 0 10px 0; }
-.card { border:2px solid #000; border-radius:15px; padding:20px; margin-bottom:20px; background:#fffbe6; }
-.card p { margin-bottom:10px; }
-.btn { display:inline-block; background:#0044cc; color:#fff; padding:14px 25px; border-radius:10px; text-decoration:none; margin:5px 5px 5px 0; }
-.btn-green { background:#008000; }
-.btn-black { background:#000; }
-ul { margin-left:25px; margin-bottom:15px; }
-footer { background:#000; color:#fff; padding:30px 20px; text-align:center; }
-footer a { color:#ffcc00; }
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { margin:0; background:#0f172a; color:white; }
+header { padding:20px; text-align:center; background:#1e293b; }
+header h1 { margin:0; font-size:26px; color:#38bdf8; }
+header p { color:#cbd5e1; }
+.search-box { padding:15px; text-align:center; }
+.search-box input { width:90%; max-width:500px; padding:12px; border-radius:10px; border:none; font-size:16px; }
+.filters { text-align:center; padding:0 10px 10px; }
+.filters button { padding:8px 15px; margin:4px; border:none; border-radius:20px; background:#334155; color:white; cursor:pointer; }
+.filters button.active { background:#38bdf8; color:black; }
+.grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:15px; padding:15px; }
+.card { background:#1e293b; border-radius:15px; padding:15px; }
+.card h3 { margin:0 0 5px; }
+.card span { font-size:12px; background:#38bdf8; color:black; padding:3px 8px; border-radius:10px; }
+.card p { color:#cbd5e1; font-size:14px; min-height:40px; }
+.card a { display:block; text-align:center; background:#22c55e; color:white; padding:10px; border-radius:10px; text-decoration:none; font-weight:bold; margin-top:10px; }
+#adminPanel { display:none; padding:20px; background:white; color:black; }
+#adminPanel input, #adminPanel textarea, #adminPanel select { width:100%; padding:10px; margin:6px 0; border:1px solid #ccc; border-radius:8px; }
+#adminPanel button { padding:12px; width:100%; background:#0ea5e9; color:white; border:none; border-radius:8px; font-size:16px; }
+footer { text-align:center; padding:15px; color:#94a3b8; font-size:13px; }
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to Main Content</a>
 
 <header>
 <h1>Bridge Tech Welfare</h1>
-<p>Technology Ab Sab Ke Liye Hai</p>
-<p>Created by: Ch AbdulRafay</p>
+<p>Blind Users Ke Liye Free Plugins, Tools & Screen Readers</p>
 </header>
 
-<nav aria-label="Main Menu">
-<a href="#home">Home</a>
-<a href="#apps">Apps</a>
-<a href="#tutorials">Tutorials</a>
-<a href="#podcast">Podcast</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<div class="search-box" role="search">
-<label for="search"><h2 style="border:none; text-align:center;">Website Mein Search Karo</h2></label><br>
-<input type="search" id="search" placeholder="Yahan likho - jaise TalkBack, WhatsApp, PDF">
-<br>
-<button onclick="alert('Search Feature - Apni App Ya Tutorial Ka Naam Likho')">Search Karo</button>
+<div class="search-box">
+<input type="text" id="search" placeholder="Search Plugin... Jieshuo, NVDA..." onkeyup="render()">
 </div>
 
-<main id="main">
-<section id="home">
-<h2>Welcome - Khush Aamdeed</h2>
-<p><strong>Assalam-o-Alaikum Dosto!</strong></p>
-<p>Bridge Tech Welfare ek free website hai, jo nabina aur kam dekhne wale doston ke liye banayi gayi hai.</p>
-<p>Yahan aap ko milega:</p>
-<ul>
-<li>Free Accessible Android Apps</li>
-<li>Android Tutorials - Bilkul Aasan Zabaan Mein</li>
-<li>Podcast Lectures - Android Ke New Updates Par</li>
-<li>Text to PDF Jaisi Free Tools</li>
-<li>Aur Har Masle Ka Hal - Bilkul Free</li>
-</ul>
-<p><strong>Hamara Maqsad Ek Hi Hai:</strong> Koi bhi nabina dost technology se peeche na rahe.</p>
-<a class="btn" href="#apps">Apps Dekho</a>
-<a class="btn btn-green" href="#tutorials">Tutorials Dekho</a>
-</section>
+<div class="filters" id="filters"></div>
 
-<section id="apps">
-<h2>Free Apps - Hamari Apps</h2>
-<p>Sab apps free hain, koi ads nahi, aur sab TalkBack aur Jieshuo ke saath poori tarah chalti hain.</p>
-
-<div class="card">
-<h3>1. Text to PDF - Bridge Tech Welfare</h3>
-<p>Apna koi bhi text likho aur ek click mein usay khoobsurat PDF bana lo.</p>
-<p><strong>Version:</strong> 1.0 | <strong>Size:</strong> Free | <strong>For:</strong> Android</p>
-<a class="btn" href="#">Download Text to PDF</a>
-<a class="btn btn-black" href="#">View Code</a>
+<div id="adminPanel">
+<h2>Secret Admin Panel</h2>
+<p>Yahan Naya Plugin Add Karo - Drive Link Yahan Lagao</p>
+<input type="text" id="title" placeholder="Title - Jese: Jieshuo Screen Reader">
+<select id="category">
+<option>Applications</option>
+<option>Extensions</option>
+<option>Tools</option>
+<option>Add-Ons</option>
+<option>Screen Readers</option>
+</select>
+<textarea id="desc" placeholder="Description - Ye plugin kis kaam aata hai?"></textarea>
+<input type="text" id="link" placeholder="Link - Yahan Drive / Website Link Paste Karo">
+<button onclick="addItem()">Save Plugin</button>
 </div>
 
-<div class="card">
-<h3>2. Smart TTS - Urdu, Hindi, English Bolne Wala</h3>
-<p>Jo text aap likhen, wo Urdu, Hindi aur English mein saaf bol kar sunaye ga.</p>
-<p><strong>Version:</strong> 1.4 | <strong>For:</strong> TalkBack, Jieshuo</p>
-<a class="btn" href="#">Download Smart TTS</a>
-</div>
+<div class="grid" id="list"></div>
+<footer>Bridge Tech Welfare | Made For Blind Community ❤️</footer>
 
-<div class="card">
-<h3>3. Bridge Tech Screen Recorder</h3>
-<p>Apni screen record karo, apne doston ko sikhao, aur YouTube par daalo. Bilkul aasan, bilkul accessible.</p>
-<p><strong>Version:</strong> 1.1 | <strong>For:</strong> Android 7+</p>
-<a class="btn" href="#">Download Screen Recorder</a>
-</div>
-</section>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script>
+// Firebase Config - Aapka bridgetech-welfare Project
+const firebaseConfig = {
+  apiKey: "AIzaSyD5AWr7FDOUPLUtcbhoMgztIYupXqIaes8",
+  authDomain: "bridgetech-welfare.firebaseapp.com",
+  projectId: "bridgetech-welfare",
+  storageBucket: "bridgetech-welfare.firebasestorage.app",
+  messagingSenderId: "271765569707",
+  appId: "1:271765569707:web:10865d27fe8a9f154377ee",
+  measurementId: "G-QWNZGMGL72"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-<section id="tutorials">
-<h2>Tutorials - Seekhna Shuru Karo</h2>
+let data = [];
+let currentFilter = "All";
+let isAdmin = new URLSearchParams(location.search).get('admin') === 'rafay123';
+document.getElementById('adminPanel').style.display = isAdmin ? 'block' : 'none';
 
-<div class="card">
-<h3>Lecture 1: Android Kya Hai? Shuru Se Seekho</h3>
-<p>Android mobile ko bilkul shuru se seekhne ke liye pehla lecture. TalkBack on karna, mobile chalana, sab kuch.</p>
-<a class="btn" href="#">Lecture Parho</a>
-</div>
+// Data Load Karo Firebase Se
+db.collection("plugins").orderBy("createdAt","desc").onSnapshot((snap)=>{
+  data = [];
+  snap.forEach(doc=>{
+    let d = doc.data(); d.id = doc.id; data.push(d);
+  });
+  // Agar Firebase Bilkul Khali Hai To Default Daal Do
+  if(data.length===0){
+    db.collection("plugins").add({title:"Jieshuo Screen Reader", category:"Screen Readers", desc:"Best Screen Reader For Android, TalkBack Ka Best Alternative.", link:"https://accessibleandroid.com/jieshuo-screen-reader/", createdAt: Date.now()});
+    db.collection("plugins").add({title:"NVDA Screen Reader", category:"Screen Readers", desc:"Free Screen Reader For Windows Computer.", link:"https://www.nvaccess.org/download/", createdAt: Date.now()});
+  }
+  render();
+});
 
-<div class="card">
-<h3>Lecture 2: TalkBack Ke New Features - Android 17</h3>
-<p>Android 17 mein TalkBack aur bhi tez aur saaf ho gaya hai. Is lecture mein poora tareeka hai.</p>
-<a class="btn" href="#">Lecture Parho</a>
-</div>
-
-<div class="card">
-<h3>Lecture 3: WhatsApp Nabina Dost Kaise Chalayen?</h3>
-<p>WhatsApp par message bhejna, voice bhejna, group join karna - sab kuch aasan zabaan mein.</p>
-<a class="btn" href="#">Lecture Parho</a>
-</div>
-
-<div class="card">
-<h3>Lecture 4: Gemini Intelligence Se Mobile Chalao</h3>
-<p>Ab sirf bol kar mobile chalao. Gemini se message, reminder aur sab kaam karwao.</p>
-<a class="btn" href="#">Lecture Parho</a>
-</div>
-</section>
-
-<section id="podcast">
-<h2>Podcast - Sun Kar Seekho</h2>
-<p>Hamara podcast har hafte aata hai. Aap isay sun kar bhi seekh sakte ho, aur download kar ke bhi.</p>
-<div class="card">
-<h3>Latest Podcast: Android Ke New Updates - Android 17 Aa Gaya Hai</h3>
-<p><strong>Duration:</strong> 10 Minutes | <strong>By:</strong> Instructor of BTW</p>
-<p>Is podcast mein hum ne bataya hai: Gemini, Quick Share, Bubbles, Screen Reactions, Security aur TalkBack ke naye updates.</p>
-<a class="btn btn-green" href="#">Podcast Suno</a>
-<a class="btn" href="#">Podcast Download Karo</a>
-</div>
-<div class="card">
-<h3>Podcast List</h3>
-<ul>
-<li>Podcast 1: Technology Ab Sab Ke Liye Hai</li>
-<li>Podcast 2: Android Ke New Updates</li>
-<li>Podcast 3: TalkBack Ko Tez Kaise Karen?</li>
-</ul>
-</div>
-</section>
-
-<section id="about">
-<h2>About Us - Hamare Baare Mein</h2>
-<p><strong>Bridge Tech Welfare</strong> ko <strong>Ch AbdulRafay</strong> ne banaya hai.</p>
-<p>Hamara kaam hai: Nabina doston ko technology sikhana, un ke liye free apps banana, aur un ko khud-mukhtar banana.</p>
-<p><strong>Hamara Slogan:</strong> Technology Ab Sab Ke Liye Hai.</p>
-<p>Ye website blindhelp.net aur blindworldhub jaisi bari websites ko dekh kar banayi gayi hai, taake Pakistan ke nabina doston ko apni zabaan mein sab kuch mil sake.</p>
-</section>
-
-<section id="contact">
-<h2>Contact Us - Hum Se Rabta Karo</h2>
-<p>Agar aap ko koi app chahiye, koi lecture chahiye, ya koi masla hai, to hum se rabta karo. Hum bilkul free mein madad karenge.</p>
-<p><a class="btn" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t">WhatsApp Channel Join Karo</a></p>
-<p><a class="btn btn-green" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n">WhatsApp Community Join Karo</a></p>
-<p><a class="btn btn-black" href="https://youtube.com/@instructor-of-btw">YouTube Channel Subscribe Karo</a></p>
-<p><strong>Email:</strong> <a href="mailto:bridgetechwelfare@gmail.com">bridgetechwelfare@gmail.com</a></p>
-<p><strong>WhatsApp Number:</strong> 03057040811</p>
-</section>
-</main>
-
-<footer>
-<p><strong>Bridge Tech Welfare</strong></p>
-<p>Created by: Ch AbdulRafay</p>
-<p>Technology Ab Sab Ke Liye Hai</p>
-<p><a href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t">WhatsApp Channel</a> | <a href="https://youtube.com/@instructor-of-btw">YouTube</a> | <a href="mailto:bridgetechwelfare@gmail.com">Email</a></p>
-<p>© 2026 Bridge Tech Welfare. Sab Kuch Free Hai.</p>
-</footer>
+function render(){
+  let q = document.getElementById('search').value.toLowerCase();
+  let cats = ["All", ...new Set(data.map(x=>x.category))];
+  document.getElementById('filters').innerHTML = cats.map(c=>`<button class="${c===currentFilter?'active':''}" onclick="setFilter('${c}')">${c}</button>`).join('');
+  let filtered = data.filter(x => (currentFilter==="All" || x.category===currentFilter) && x.title.toLowerCase().includes(q));
+  document.getElementById('list').innerHTML = filtered.map((item)=>{
+    return `<div class="card">
+      <span>${item.category}</span>
+      <h3 style="margin-top:10px">${item.title}</h3>
+      <p>${item.desc}</p>
+      <a href="${item.link}" target="_blank">Download Karo</a>
+      ${isAdmin ? `<button onclick="deleteItem('${item.id}')" style="padding:8px;width:100%;border:none;border-radius:8px;color:white;margin-top:5px;background:#ef4444">Delete</button>` : ''}
+    </div>`}).join('') || '<p style="text-align:center">Kuch Nahi Mila</p>';
+}
+function setFilter(c){ currentFilter=c; render(); }
+function addItem(){
+  let t = document.getElementById('title').value;
+  let c = document.getElementById('category').value;
+  let d = document.getElementById('desc').value;
+  let l = document.getElementById('link').value;
+  if(!t || !l){ alert("Title aur Link zaroori hai bhai!"); return; }
+  db.collection("plugins").add({title:t, category:c, desc:d, link:l, createdAt: Date.now()}).then(()=>{
+    alert("Ho Gaya Bhai! Firebase Me Save Ho Gaya");
+    document.getElementById('title').value=''; document.getElementById('desc').value=''; document.getElementById('link').value='';
+  });
+}
+function deleteItem(id){
+  if(confirm("Delete kar dun bhai?")){ db.collection("plugins").doc(id).delete(); }
+}
+</script>
 </body>
 </html>
