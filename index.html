@@ -3,223 +3,181 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bridge Tech Welfare official member portal. Login to access free tools, apps, courses and community links.">
-<meta name="theme-color" content="#0f2a6b">
-<title>Bridge Tech Welfare | Official Member Portal</title>
+<title>Bridge Tech Welfare - Free Apps, Tutorials & Podcasts For Blind People | Technology Ab Sab Ke Liye Hai</title>
+<meta name="description" content="Bridge Tech Welfare - Free accessible apps, Android tutorials, podcasts and help for blind and visually impaired people. Created by Ch AbdulRafay. Technology Ab Sab Ke Liye Hai.">
 <style>
-  :root {    
-    --blue-900: #0b1f4d;    
-    --blue-700: #0f2a6b;    
-    --blue-500: #1a56db;    
-    --green-600: #15803d;    
-    --ink: #0f172a;    
-    --muted: #475569;    
-    --line: #e2e8f0;    
-    --danger: #b91c1c;    
-    --focus: #f59e0b;    
-    --radius: 14px;  
-  }
-  * { box-sizing: border-box; }
-  html, body { min-height: 100%; }
-  body {    
-    margin: 0;    
-    font-family: "Segoe UI", Tahoma, system-ui, -apple-system, Arial, sans-serif;    
-    line-height: 1.55;    
-    color: var(--ink);    
-    background: radial-gradient(1100px 560px at 8% 0%, #dbeafe 0%, transparent 55%),      
-                radial-gradient(900px 520px at 100% 100%, #dcfce7 0%, transparent 50%),
-                #eef2f7;    
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-  }
-  .card {
-    width: 100%;
-    max-width: 480px;
-    background: #ffffff;
-    border-radius: var(--radius);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
-    padding: 30px;
-    border: 1px solid var(--line);
-  }
-  .logo-area {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  .logo-area h1 {
-    font-size: 22px;
-    color: var(--blue-700);
-    margin: 0 0 6px 0;
-  }
-  .logo-area p {
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-  }
-  /* Buttons container */
-  .auth-buttons {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .auth-btn {
-    flex: 1;
-    padding: 12px;
-    text-align: center;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 15px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 2px solid var(--blue-700);
-    background: transparent;
-    color: var(--blue-700);
-  }
-  .auth-btn.active {
-    background: var(--blue-700);
-    color: #ffffff;
-  }
-  .form-section {
-    display: none;
-  }
-  .form-section.active {
-    display: block;
-  }
-  .input-group {
-    margin-bottom: 16px;
-  }
-  .input-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--ink);
-  }
-  .input-group input {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    font-size: 14px;
-  }
-  .submit-btn {
-    width: 100%;
-    padding: 12px;
-    background: var(--blue-700);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-  }
-  .submit-btn:hover {
-    background: var(--blue-900);
-  }
-  .links-section {
-    margin-top: 20px;
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-    text-align: center;
-  }
-  .links-section a {
-    display: inline-block;
-    color: var(--blue-500);
-    text-decoration: none;
-    font-weight: 500;
-    margin: 6px 12px;
-    font-size: 14px;
-  }
-  .links-section a:hover {
-    text-decoration: underline;
-  }
-  .footer-text {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 20px;
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; font-size:20px; line-height:1.8; background:#ffffff; color:#000000; }
+a { color:#0044cc; font-weight:bold; }
+a:focus, button:focus, input:focus { outline:4px solid #ffcc00; outline-offset:2px; }
+.skip { position:absolute; left:-9999px; }
+.skip:focus { position:static; background:#ffcc00; color:#000; padding:10px; display:block; text-align:center; }
+header { background:#000000; color:#ffffff; padding:35px 20px; text-align:center; }
+header h1 { font-size:42px; margin-bottom:10px; }
+header p { font-size:22px; color:#ffcc00; }
+nav { background:#0044cc; padding:15px; text-align:center; }
+nav a { color:#fff; margin:0 12px; text-decoration:none; font-size:20px; }
+nav a:hover { text-decoration:underline; }
+.search-box { background:#f2f2f2; padding:25px 20px; text-align:center; }
+.search-box input { width:90%; max-width:600px; padding:15px; font-size:20px; border:3px solid #000; border-radius:10px; }
+.search-box button { padding:15px 30px; font-size:20px; background:#000; color:#fff; border:none; border-radius:10px; margin-top:10px; cursor:pointer; }
+main { max-width:900px; margin:auto; padding:20px; }
+section { margin-bottom:40px; border-bottom:2px solid #ddd; padding-bottom:30px; }
+h2 { font-size:30px; margin-bottom:15px; color:#000; border-left:8px solid #ffcc00; padding-left:12px; }
+h3 { font-size:24px; margin:20px 0 10px 0; }
+.card { border:2px solid #000; border-radius:15px; padding:20px; margin-bottom:20px; background:#fffbe6; }
+.card p { margin-bottom:10px; }
+.btn { display:inline-block; background:#0044cc; color:#fff; padding:14px 25px; border-radius:10px; text-decoration:none; margin:5px 5px 5px 0; }
+.btn-green { background:#008000; }
+.btn-black { background:#000; }
+ul { margin-left:25px; margin-bottom:15px; }
+footer { background:#000; color:#fff; padding:30px 20px; text-align:center; }
+footer a { color:#ffcc00; }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to Main Content</a>
 
-  <div class="card">
-    <div class="logo-area">
-      <h1>Bridge Tech Welfare</h1>
-      <p>Official Member Portal</p>
-    </div>
+<header>
+<h1>Bridge Tech Welfare</h1>
+<p>Technology Ab Sab Ke Liye Hai</p>
+<p>Created by: Ch AbdulRafay</p>
+</header>
 
-    <!-- Toggle Buttons -->
-    <div class="auth-buttons">
-      <button id="loginTabBtn" class="auth-btn active" onclick="switchForm('login')">Login</button>
-      <button id="registerTabBtn" class="auth-btn" onclick="switchForm('register')">Create Account</button>
-    </div>
+<nav aria-label="Main Menu">
+<a href="#home">Home</a>
+<a href="#apps">Apps</a>
+<a href="#tutorials">Tutorials</a>
+<a href="#podcast">Podcast</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
 
-    <!-- Login Form -->
-    <div id="loginForm" class="form-section active">
-      <div class="input-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="Enter your email" required>
-      </div>
-      <div class="input-group">
-        <label>Password</label>
-        <input type="password" placeholder="Enter your password" required>
-      </div>
-      <button type="button" class="submit-btn" onclick="alert('Login functionality connected successfully!')">Login to Portal</button>
-    </div>
+<div class="search-box" role="search">
+<label for="search"><h2 style="border:none; text-align:center;">Website Mein Search Karo</h2></label><br>
+<input type="search" id="search" placeholder="Yahan likho - jaise TalkBack, WhatsApp, PDF">
+<br>
+<button onclick="alert('Search Feature - Apni App Ya Tutorial Ka Naam Likho')">Search Karo</button>
+</div>
 
-    <!-- Register Form -->
-    <div id="registerForm" class="form-section">
-      <div class="input-group">
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your full name" required>
-      </div>
-      <div class="input-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="Enter your email" required>
-      </div>
-      <div class="input-group">
-        <label>Password</label>
-        <input type="password" placeholder="Create a password" required>
-      </div>
-      <button type="button" class="submit-btn" onclick="alert('Account created successfully!')">Register Account</button>
-    </div>
+<main id="main">
+<section id="home">
+<h2>Welcome - Khush Aamdeed</h2>
+<p><strong>Assalam-o-Alaikum Dosto!</strong></p>
+<p>Bridge Tech Welfare ek free website hai, jo nabina aur kam dekhne wale doston ke liye banayi gayi hai.</p>
+<p>Yahan aap ko milega:</p>
+<ul>
+<li>Free Accessible Android Apps</li>
+<li>Android Tutorials - Bilkul Aasan Zabaan Mein</li>
+<li>Podcast Lectures - Android Ke New Updates Par</li>
+<li>Text to PDF Jaisi Free Tools</li>
+<li>Aur Har Masle Ka Hal - Bilkul Free</li>
+</ul>
+<p><strong>Hamara Maqsad Ek Hi Hai:</strong> Koi bhi nabina dost technology se peeche na rahe.</p>
+<a class="btn" href="#apps">Apps Dekho</a>
+<a class="btn btn-green" href="#tutorials">Tutorials Dekho</a>
+</section>
 
-    <!-- Community & Useful Links -->
-    <div class="links-section">
-      <a href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n" target="_blank">WhatsApp Community</a>
-      <a href="https://bridgetechwelfare-web.github.io/" target="_blank">Portal Home</a>
-    </div>
-  </div>
+<section id="apps">
+<h2>Free Apps - Hamari Apps</h2>
+<p>Sab apps free hain, koi ads nahi, aur sab TalkBack aur Jieshuo ke saath poori tarah chalti hain.</p>
 
-  <div class="footer-text">
-    &copy; 2026 Bridge Tech Welfare. All rights reserved.
-  </div>
+<div class="card">
+<h3>1. Text to PDF - Bridge Tech Welfare</h3>
+<p>Apna koi bhi text likho aur ek click mein usay khoobsurat PDF bana lo.</p>
+<p><strong>Version:</strong> 1.0 | <strong>Size:</strong> Free | <strong>For:</strong> Android</p>
+<a class="btn" href="#">Download Text to PDF</a>
+<a class="btn btn-black" href="#">View Code</a>
+</div>
 
-  <script>
-    function switchForm(type) {
-      const loginTab = document.getElementById('loginTabBtn');
-      const registerTab = document.getElementById('registerTabBtn');
-      const loginForm = document.getElementById('loginForm');
-      const registerForm = document.getElementById('registerForm');
+<div class="card">
+<h3>2. Smart TTS - Urdu, Hindi, English Bolne Wala</h3>
+<p>Jo text aap likhen, wo Urdu, Hindi aur English mein saaf bol kar sunaye ga.</p>
+<p><strong>Version:</strong> 1.4 | <strong>For:</strong> TalkBack, Jieshuo</p>
+<a class="btn" href="#">Download Smart TTS</a>
+</div>
 
-      if (type === 'login') {
-        loginTab.classList.add('active');
-        registerTab.classList.remove('active');
-        loginForm.classList.add('active');
-        registerForm.classList.remove('active');
-      } else {
-        registerTab.classList.add('active');
-        loginTab.classList.remove('active');
-        registerForm.classList.add('active');
-        loginForm.classList.remove('active');
-      }
-    }
-  </script>
+<div class="card">
+<h3>3. Bridge Tech Screen Recorder</h3>
+<p>Apni screen record karo, apne doston ko sikhao, aur YouTube par daalo. Bilkul aasan, bilkul accessible.</p>
+<p><strong>Version:</strong> 1.1 | <strong>For:</strong> Android 7+</p>
+<a class="btn" href="#">Download Screen Recorder</a>
+</div>
+</section>
 
+<section id="tutorials">
+<h2>Tutorials - Seekhna Shuru Karo</h2>
+
+<div class="card">
+<h3>Lecture 1: Android Kya Hai? Shuru Se Seekho</h3>
+<p>Android mobile ko bilkul shuru se seekhne ke liye pehla lecture. TalkBack on karna, mobile chalana, sab kuch.</p>
+<a class="btn" href="#">Lecture Parho</a>
+</div>
+
+<div class="card">
+<h3>Lecture 2: TalkBack Ke New Features - Android 17</h3>
+<p>Android 17 mein TalkBack aur bhi tez aur saaf ho gaya hai. Is lecture mein poora tareeka hai.</p>
+<a class="btn" href="#">Lecture Parho</a>
+</div>
+
+<div class="card">
+<h3>Lecture 3: WhatsApp Nabina Dost Kaise Chalayen?</h3>
+<p>WhatsApp par message bhejna, voice bhejna, group join karna - sab kuch aasan zabaan mein.</p>
+<a class="btn" href="#">Lecture Parho</a>
+</div>
+
+<div class="card">
+<h3>Lecture 4: Gemini Intelligence Se Mobile Chalao</h3>
+<p>Ab sirf bol kar mobile chalao. Gemini se message, reminder aur sab kaam karwao.</p>
+<a class="btn" href="#">Lecture Parho</a>
+</div>
+</section>
+
+<section id="podcast">
+<h2>Podcast - Sun Kar Seekho</h2>
+<p>Hamara podcast har hafte aata hai. Aap isay sun kar bhi seekh sakte ho, aur download kar ke bhi.</p>
+<div class="card">
+<h3>Latest Podcast: Android Ke New Updates - Android 17 Aa Gaya Hai</h3>
+<p><strong>Duration:</strong> 10 Minutes | <strong>By:</strong> Instructor of BTW</p>
+<p>Is podcast mein hum ne bataya hai: Gemini, Quick Share, Bubbles, Screen Reactions, Security aur TalkBack ke naye updates.</p>
+<a class="btn btn-green" href="#">Podcast Suno</a>
+<a class="btn" href="#">Podcast Download Karo</a>
+</div>
+<div class="card">
+<h3>Podcast List</h3>
+<ul>
+<li>Podcast 1: Technology Ab Sab Ke Liye Hai</li>
+<li>Podcast 2: Android Ke New Updates</li>
+<li>Podcast 3: TalkBack Ko Tez Kaise Karen?</li>
+</ul>
+</div>
+</section>
+
+<section id="about">
+<h2>About Us - Hamare Baare Mein</h2>
+<p><strong>Bridge Tech Welfare</strong> ko <strong>Ch AbdulRafay</strong> ne banaya hai.</p>
+<p>Hamara kaam hai: Nabina doston ko technology sikhana, un ke liye free apps banana, aur un ko khud-mukhtar banana.</p>
+<p><strong>Hamara Slogan:</strong> Technology Ab Sab Ke Liye Hai.</p>
+<p>Ye website blindhelp.net aur blindworldhub jaisi bari websites ko dekh kar banayi gayi hai, taake Pakistan ke nabina doston ko apni zabaan mein sab kuch mil sake.</p>
+</section>
+
+<section id="contact">
+<h2>Contact Us - Hum Se Rabta Karo</h2>
+<p>Agar aap ko koi app chahiye, koi lecture chahiye, ya koi masla hai, to hum se rabta karo. Hum bilkul free mein madad karenge.</p>
+<p><a class="btn" href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t">WhatsApp Channel Join Karo</a></p>
+<p><a class="btn btn-green" href="https://chat.whatsapp.com/CDkyuCcPVyEIAkW87j644n">WhatsApp Community Join Karo</a></p>
+<p><a class="btn btn-black" href="https://youtube.com/@instructor-of-btw">YouTube Channel Subscribe Karo</a></p>
+<p><strong>Email:</strong> <a href="mailto:bridgetechwelfare@gmail.com">bridgetechwelfare@gmail.com</a></p>
+<p><strong>WhatsApp Number:</strong> 03057040811</p>
+</section>
+</main>
+
+<footer>
+<p><strong>Bridge Tech Welfare</strong></p>
+<p>Created by: Ch AbdulRafay</p>
+<p>Technology Ab Sab Ke Liye Hai</p>
+<p><a href="https://whatsapp.com/channel/0029VbCJfWSAojYuaMuB9E1t">WhatsApp Channel</a> | <a href="https://youtube.com/@instructor-of-btw">YouTube</a> | <a href="mailto:bridgetechwelfare@gmail.com">Email</a></p>
+<p>© 2026 Bridge Tech Welfare. Sab Kuch Free Hai.</p>
+</footer>
 </body>
 </html>
